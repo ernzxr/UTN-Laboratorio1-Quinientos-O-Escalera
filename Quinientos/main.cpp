@@ -201,7 +201,7 @@ int main(){
                                         cambiarColor();
                                         break;
                                     case 2:
-                                        ///COLOR VERDE
+                                        ///COLOR VIOLETA
                                         cambiarColor2();
                                         break;
                                     case 3:

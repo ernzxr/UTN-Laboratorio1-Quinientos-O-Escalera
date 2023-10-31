@@ -3,43 +3,46 @@
 
 
 
-void colorMenuPrincipal(int numero){
+void digitoErroneoMenu(int numero){
         if(numero>4 || numero<0){
         rlutil::setColor(rlutil::RED);
-         rlutil::locate(50, 17);
+        rlutil::locate(50, 17);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
-
     }
 }
-void colorMenuMultijugador(int numero){
+void DigitoErroneoMulti(int numero){
         if(numero>3 || numero<0){
         rlutil::setColor(rlutil::RED);
+        rlutil::locate(50, 15);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
      }
 }
-void menuOpciones(int numero){
+void DigitoErroneoOpc(int numero){
         if(numero>2 || numero<0){
         rlutil::setColor(rlutil::RED);
+        rlutil::locate(50, 14);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
      }
 }
-void menuColor(int numero){
+void DigitoErroneoMenucolor(int numero){
         if(numero>3 || numero<0){
         rlutil::setColor(rlutil::RED);
+        rlutil::locate(50, 15);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
      }
 }
-void menuSonido(int numero){
+void DigitoErroneoMenuSonido(int numero){
         if(numero>3 || numero<0){
         rlutil::setColor(rlutil::RED);
+        rlutil::locate(50, 15);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
