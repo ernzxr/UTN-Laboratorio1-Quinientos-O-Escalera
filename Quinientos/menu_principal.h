@@ -2,14 +2,22 @@
 #define MENU_PRINCIPAL_H_INCLUDED
 
 int menuPrincipal(){
-    int num;
+    int num, y=0;
+    rlutil::locate(48, 11 + y);
+    cout<< char(175)<<endl;
+    rlutil::locate(50, 9);
     cout<<"BIENVENIDOS"<<endl;
+    rlutil::locate(50, 11);
     cout<<"UN JUGADOR [1]"<<endl;
+    rlutil::locate(50, 12);
     cout<<"MULTIJUGADOR [2]"<<endl;
+    rlutil::locate(50, 13);
     cout<<"RANKING [3]"<<endl;
+    rlutil::locate(50, 14);
     cout<<"OPCIONES [4]"<<endl;
+    rlutil::locate(50, 15);
     cout<<"SALIR [0]"<<endl;
-    cout<<"ELIJA UNA OPCION: ";
+    rlutil::locate(50, 16);
     cin>>num;
     return num;
 }
@@ -48,11 +56,25 @@ int menuColor(){
 int menuSonido(){
     int num;
     cout<<"QUITAR SONIDO [1]"<<endl;
-    cout<<"CAMBIAR MUSICA [2]"<<endl;
+    cout<<"PONER SONIDO [2]"<<endl;
+    cout<<"CAMBIAR MUSICA [3]"<<endl;
     cout<<"VOLVER [0]"<<endl;
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
     return num;
+}
+
+void scrollMenu(int key, int y) {
+    switch(key) {
+        case 14:
+            y--;
+        break;
+        case 15:
+            y++;
+        break;
+        case 1:
+        break;
+    }
 }
 
 #endif // MENU_PRINCIPAL_H_INCLUDED
