@@ -15,7 +15,7 @@ void digitoErroneoMenu(int numero){
 void DigitoErroneoMulti(int numero){
         if(numero>3 || numero<0){
         rlutil::setColor(rlutil::RED);
-        rlutil::locate(50, 15);
+        rlutil::locate(50, 16);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
@@ -24,7 +24,7 @@ void DigitoErroneoMulti(int numero){
 void DigitoErroneoOpc(int numero){
         if(numero>2 || numero<0){
         rlutil::setColor(rlutil::RED);
-        rlutil::locate(50, 14);
+        rlutil::locate(50, 15);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
@@ -33,7 +33,7 @@ void DigitoErroneoOpc(int numero){
 void DigitoErroneoMenucolor(int numero){
         if(numero>3 || numero<0){
         rlutil::setColor(rlutil::RED);
-        rlutil::locate(50, 15);
+        rlutil::locate(50, 16);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
@@ -42,7 +42,7 @@ void DigitoErroneoMenucolor(int numero){
 void DigitoErroneoMenuSonido(int numero){
         if(numero>3 || numero<0){
         rlutil::setColor(rlutil::RED);
-        rlutil::locate(50, 15);
+        rlutil::locate(50, 16);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();

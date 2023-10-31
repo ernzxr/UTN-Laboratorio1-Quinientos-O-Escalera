@@ -22,67 +22,71 @@ int menuPrincipal(){
     digitoErroneoMenu(num);
 
 }
-
 int menuMultijugador(){
     int num;
-    rlutil::locate(50, 10);
-    cout<<"DOS JUGADORES [1]"<<endl;
+    rlutil::locate(50, 9);
+    cout<<"MULTIJUGADOR"<<endl;
     rlutil::locate(50, 11);
-    cout<<"TRES JUGADORES [2]"<<endl;
+    cout<<"DOS JUGADORES [1]"<<endl;
     rlutil::locate(50, 12);
-    cout<<"CUATRO JUGADORES [3]"<<endl;
+    cout<<"TRES JUGADORES [2]"<<endl;
     rlutil::locate(50, 13);
-    cout<<"VOLVER [0]"<<endl;
+    cout<<"CUATRO JUGADORES [3]"<<endl;
     rlutil::locate(50, 14);
+    cout<<"VOLVER [0]"<<endl;
+    rlutil::locate(50, 15);
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
     DigitoErroneoMulti(num);
 }
-
 int menuOpciones(){
     int num;
-    rlutil::locate(50, 10);
-    cout<<"SONIDO [1]"<<endl;
+    rlutil::locate(50, 9);
+    cout<<"MENU OPCIONES"<<endl;
     rlutil::locate(50, 11);
-    cout<<"CAMBIAR COLOR [2]"<<endl;
+    cout<<"SONIDO [1]"<<endl;
     rlutil::locate(50, 12);
-    cout<<"VOLVER [0]"<<endl;
+    cout<<"CAMBIAR COLOR [2]"<<endl;
     rlutil::locate(50, 13);
+    cout<<"VOLVER [0]"<<endl;
+    rlutil::locate(50, 14);
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
     DigitoErroneoOpc(num);
 }
-
-int menuColor(){
-    int num;
-    rlutil::locate(50, 10);
-    cout<<"COLOR AZUL [1]"<<endl;
-    rlutil::locate(50, 11);
-    cout<<"COLOR VIOLETA [2]"<<endl;
-    rlutil::locate(50, 12);
-    cout<<"POR DEFECTO[3]"<<endl;
-    rlutil::locate(50, 13);
-    cout<<"VOLVER [0]"<<endl;
-    rlutil::locate(50, 14);
-    cout<<"ELIJA UNA OPCION: ";
-    cin>>num;
-    DigitoErroneoMenucolor(num);
-}
-
 int menuSonido(){
     int num;
-    rlutil::locate(50, 10);
-    cout<<"QUITAR SONIDO [1]"<<endl;
+    rlutil::locate(50, 9);
+    cout<<"MENU SONIDO"<<endl;
     rlutil::locate(50, 11);
-    cout<<"PONER SONIDO [2]"<<endl;
+    cout<<"QUITAR SONIDO [1]"<<endl;
     rlutil::locate(50, 12);
-    cout<<"CAMBIAR MUSICA [3]"<<endl;
+    cout<<"PONER SONIDO [2]"<<endl;
     rlutil::locate(50, 13);
-    cout<<"VOLVER [0]"<<endl;
+    cout<<"CAMBIAR MUSICA [3]"<<endl;
     rlutil::locate(50, 14);
+    cout<<"VOLVER [0]"<<endl;
+    rlutil::locate(50, 15);
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
     DigitoErroneoMenuSonido(num);
+}
+int menuColor(){
+    int num;
+    rlutil::locate(50, 9);
+    cout<<"MENU COLOR"<<endl;
+    rlutil::locate(50, 11);
+    cout<<"COLOR AZUL [1]"<<endl;
+    rlutil::locate(50, 12);
+    cout<<"COLOR VIOLETA [2]"<<endl;
+    rlutil::locate(50, 13);
+    cout<<"POR DEFECTO[3]"<<endl;
+    rlutil::locate(50, 14);
+    cout<<"VOLVER [0]"<<endl;
+    rlutil::locate(50, 15);
+    cout<<"ELIJA UNA OPCION: ";
+    cin>>num;
+    DigitoErroneoMenucolor(num);
 }
 
 void scrollMenu(int key, int y) {
