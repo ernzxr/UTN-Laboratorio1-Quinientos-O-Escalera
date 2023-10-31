@@ -47,7 +47,7 @@ int menuOpciones(){
 int menuColor(){
     int num;
     cout<<"COLOR AZUL [1]"<<endl;
-    cout<<"COLOR VERDE [2]"<<endl;
+    cout<<"COLOR VIOLETA [2]"<<endl;
     cout<<"POR DEFECTO[3]"<<endl;
     cout<<"VOLVER [0]"<<endl;
     cout<<"ELIJA UNA OPCION: ";

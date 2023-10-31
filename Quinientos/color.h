@@ -3,50 +3,46 @@
 
 
 
-int colorMenuPrincipal(int numero){
+void colorMenuPrincipal(int numero){
         if(numero>4 || numero<0){
         rlutil::setColor(rlutil::RED);
          rlutil::locate(50, 17);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
-         return numero;
+
     }
 }
-int colorMenuMultijugador(int numero){
+void colorMenuMultijugador(int numero){
         if(numero>3 || numero<0){
         rlutil::setColor(rlutil::RED);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
-        return numero;
      }
 }
-int menuOpciones(int numero){
+void menuOpciones(int numero){
         if(numero>2 || numero<0){
         rlutil::setColor(rlutil::RED);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
-        return numero;
      }
 }
-int menuColor(int numero){
+void menuColor(int numero){
         if(numero>3 || numero<0){
         rlutil::setColor(rlutil::RED);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
-        return numero;
      }
 }
-int menuSonido(int numero){
+void menuSonido(int numero){
         if(numero>3 || numero<0){
         rlutil::setColor(rlutil::RED);
         cout<<"OPCION INCORRECTA ";
         rlutil::setColor(rlutil::WHITE);
         rlutil::anykey();
-        return numero;
      }
 }
 
