@@ -12,6 +12,7 @@ using namespace std;
 #include "menu_principal.h"
 #include "jugar_partida.h"
 #include "musica.h"
+#include "color.h"
 
 int main(){
     int const CANTIDAD_JUGADORES=4, TOP=10;
@@ -23,11 +24,14 @@ int main(){
 
     inicializarSemilla();
 
+    colorFondo();
+
     while(true){
         rlutil::cls();
         if(!mute)musicaMenuPrincipal(); /// MUSICA
         opcion = menuPrincipal(); /// MENU PRINCIPAL
         switch(opcion){
+
             case 1:
                 /// UN JUGADOR
                 /// INICIALIZACION DE JUEGO
@@ -193,11 +197,16 @@ int main(){
                                 opcion = menuColor();
                                 switch(opcion){
                                     case 1:
-                                        /// COLOR 1
+                                        ///COLOR AZUL
+                                        cambiarColor();
                                         break;
                                     case 2:
-                                        /// COLOR 2
+                                        ///COLOR VERDE
+                                        cambiarColor2();
                                         break;
+                                    case 3:
+                                        ///COLOR NEGRO
+                                        cambiarColor3();
                                     case 0:
                                         /// VOLVER
                                         break;

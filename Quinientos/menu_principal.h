@@ -1,6 +1,6 @@
 #ifndef MENU_PRINCIPAL_H_INCLUDED
 #define MENU_PRINCIPAL_H_INCLUDED
-
+#include "color.h"
 int menuPrincipal(){
     int num, y=0;
     rlutil::locate(48, 11 + y);
@@ -19,7 +19,8 @@ int menuPrincipal(){
     cout<<"SALIR [0]"<<endl;
     rlutil::locate(50, 16);
     cin>>num;
-    return num;
+    colorMenuPrincipal(num);
+
 }
 
 int menuMultijugador(){
@@ -30,7 +31,7 @@ int menuMultijugador(){
     cout<<"VOLVER [0]"<<endl;
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
-    return num;
+    colorMenuMultijugador(num);
 }
 
 int menuOpciones(){
@@ -40,17 +41,18 @@ int menuOpciones(){
     cout<<"VOLVER [0]"<<endl;
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
-    return num;
+    menuOpciones(num);
 }
 
 int menuColor(){
     int num;
-    cout<<"COLOR 1 [1]"<<endl;
-    cout<<"COLOR 2 [2]"<<endl;
+    cout<<"COLOR AZUL [1]"<<endl;
+    cout<<"COLOR VERDE [2]"<<endl;
+    cout<<"POR DEFECTO[3]"<<endl;
     cout<<"VOLVER [0]"<<endl;
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
-    return num;
+    menuColor(num);
 }
 
 int menuSonido(){
@@ -61,7 +63,7 @@ int menuSonido(){
     cout<<"VOLVER [0]"<<endl;
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
-    return num;
+    menuSonido(num);
 }
 
 void scrollMenu(int key, int y) {
