@@ -189,7 +189,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
             return;
         default:
             for(int tirada=0;tirada<3;tirada++){
-                for(jugador=0;jugador<2;jugador++){
+                for(jugador=0;jugador<jugadores;jugador++){
                     if(!vGanadorEscalera[jugador]){
                         hacerTirada(vDados);
                         datosPartidaJugador(mJugadores, mPuntajeRondaJugador, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas);

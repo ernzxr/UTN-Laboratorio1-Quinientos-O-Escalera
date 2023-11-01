@@ -111,7 +111,7 @@ int main(){
                                 jugarRonda(vDados, mPuntajesTiradas, mPuntajeRondaJugador, vGanadorEscalera, vTiradasTotales, mJugadores, ronda, jugadores);
                                 for(int jugador=0;jugador<jugadores;jugador++){
                                     if(!vGanadorEscalera[jugador]){
-                                        /// GUARDAR Y SE MUESTRA MAXIMO PUNTAJE DE LAS TRES TIRADAS EN LA RONDA
+                                        /// GUARDA Y SE MUESTRA MAXIMO PUNTAJE DE LAS TRES TIRADAS EN LA RONDA
                                         cargarPuntajes(mPuntajeRondaJugador, mPuntajesTiradas, vAcuPuntajeJugador, ronda-1, jugador);
                                         mostrarPuntajeRonda(mPuntajeRondaJugador[jugador][ronda-1]);
                                         if(vAcuPuntajeJugador[jugador]>=500){
@@ -130,8 +130,16 @@ int main(){
                                         terminarPartidaPorEscalera(vTiradasTotales[jugador], ronda);
                                         cout<<mJugadores[jugador]<<endl; //ACOMODAR SALIDA DE NOMBRE ######-------#########
                                     }
+                                    if(quinientos){
+                                        if(cQuinientos>1){
                                             terminarPartidaPorQuinientos(vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador]);
                                             cout<<mJugadores[jugador]<<endl; //ACOMODAR SALIDA DE NOMBRE ######-------#########
+                                        }
+                                        else{
+                                            terminarPartidaPorQuinientos(vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador]);
+                                            cout<<mJugadores[jugador]<<endl; //ACOMODAR SALIDA DE NOMBRE ######-------#########
+                                        }
+                                    }
                                     if(ronda==maxRondas){
                                         /// SE MUESTRA EL RESULTADO FINAL SI SE LLEGO AL MAXIMO DE RONDAS
                                         terminarPartidaPorRondasMaximas(vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador]);
