@@ -75,6 +75,10 @@ void mostrarSalioEscalera(){
     cout<<endl;
 }
 
+
+/// ESTE MOSTRAR PUNTAJE VA A DESAPARECER EN EL MOMENTO QUE PONGAMOS TODO EN EL datosPartidaJugador()
+
+
 void mostrarPuntaje(int puntaje){
     cout<<endl;
     cout<<"PUNTAJE: "<<puntaje<<endl;
@@ -132,6 +136,7 @@ void terminarPartidaPorEscalera(int tiradasTotales, int ronda){
 }
 
 void terminarPartidaPorRondasMaximas(int tiradasTotales, int ronda, int puntaje){
+    rlutil::cls();
     cout<<endl;
     mostrarTiradasYRondas(tiradasTotales, ronda);
     cout<<"PUNTAJE TOTAL: "<<puntaje<<endl;
