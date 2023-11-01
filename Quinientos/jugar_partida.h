@@ -2,6 +2,7 @@
 #define JUGAR_PARTIDA_H_INCLUDED
 
 void cargarNombre(char pal[][8], int tam, int jug){
+    rlutil::cls();
     int i;
     for(int j=0; j<=jug; j++){
         solicitarNombreJugador();
@@ -14,6 +15,7 @@ void cargarNombre(char pal[][8], int tam, int jug){
         pal[j][i]='\0';
         fflush(stdin);
     }
+    rlutil::cls();
 }
 
 void hacerTirada(int *v){
@@ -155,6 +157,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeJugadores[][
         case 1:
             for(int tirada=0;tirada<3;tirada++){
                 hacerTirada(vDados);
+                datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, 0, maximoPuntajeTiradas(mPuntajesTiradas, 0));
                 mostrarDados(vDados, 0);
                 vTiradasTotales[0]+=1;
                 if(escalera(vDados)){
@@ -174,17 +177,17 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeJugadores[][
                 else{
                     mPuntajesTiradas[0][tirada]=sumaDeDados(vDados);
                 }
-                mostrarPuntaje(mPuntajesTiradas[0][tirada]);
-                datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, 0, maximoPuntajeTiradas(mPuntajesTiradas, 0), mPuntajesTiradas);
+                mostrarPuntaje(mPuntajesTiradas[0][tirada],1);
                 rlutil::anykey();
             }
             return;
         case 2:
             for(int tirada=0;tirada<3;tirada++){
                 for(int jugador=0;jugador<2;jugador++){
+
                     if(!vGanadorEscalera[jugador]){
                         hacerTirada(vDados);
-                        datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas);
+                        datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador));
                         mostrarDados(vDados, jugador);
                         vTiradasTotales[jugador]+=1;
                         if(escalera(vDados)){
@@ -204,7 +207,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeJugadores[][
                             mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
                         }
                         if(!vGanadorEscalera[jugador]){
-                            mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
+                            mostrarPuntaje(mPuntajesTiradas[jugador][tirada],jugador);
                         }
                         else{
                             mostrarSalioEscalera();

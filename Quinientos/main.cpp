@@ -37,8 +37,6 @@ int main(){
 
         opcion = menuPrincipal(); /// MENU PRINCIPAL
 
-        rlutil::showcursor();
-
         switch(opcion){
 
             case 1:
@@ -48,11 +46,11 @@ int main(){
                 maxRondas=10, ronda=0, tiradasTotales=0, jugador=1, jugadores=1;
                 escalera=false, quinientos=false;
 
+                if(!mute)playMusicaPartida(); /// MUSICA PARTIDA
+
                 reiniciarPartida(mPuntajeRondaJugador, vAcuPuntajeJugador, vGanadorEscalera, vTiradasTotales, mPuntajesTiradas, CANTIDAD_JUGADORES);
 
                 cargarNombre(mJugadores, 7, jugador-1);
-
-                if(!mute)playMusicaPartida(); /// MUSICA PARTIDA
 
                 /// SE JUEGAN LA CANTIDAD MAXIMA DE RONDAS INDICADAS
                 while(ronda<maxRondas && !escalera && !quinientos){
@@ -61,7 +59,7 @@ int main(){
                     if(!vGanadorEscalera[jugador-1]){
                         /// GUARDAR MAXIMO PUNTAJE DE LAS TRES TIRADAS EN LA RONDA CORRESPONDIENTE
                         mPuntajeRondaJugador[jugador-1][ronda]=maximoPuntajeTiradas(mPuntajesTiradas, jugador-1);
-                        mostrarPuntajeRonda(mPuntajeRondaJugador[jugador-1][ronda]);
+                        mostrarPuntajeRonda(mPuntajeRondaJugador[jugador-1][ronda],jugador);
                         vAcuPuntajeJugador[jugador-1]+=mPuntajeRondaJugador[jugador-1][ronda];
                         ronda++;
 
@@ -103,14 +101,11 @@ int main(){
                             maxRondas=10, ronda=0, tiradasTotales=0, jugadores=2;
                             escalera=false, quinientos=false;
 
-
+                            if(!mute)playMusicaPartida(); /// MUSICA PARTIDA
 
                             reiniciarPartida(mPuntajeRondaJugador, vAcuPuntajeJugador, vGanadorEscalera, vTiradasTotales, mPuntajesTiradas, CANTIDAD_JUGADORES);
 
                             cargarNombre(mJugadores, 7, jugadores-1); /// SE SOLICITAN DOS NOMBRES
-
-                            if(!mute)playMusicaPartida(); /// MUSICA PARTIDA
-
                             cout<<"\n";
                             /// SE JUEGAN LA CANTIDAD MAXIMA DE RONDAS INDICADAS
                             while(ronda<maxRondas && !escalera && !quinientos){
@@ -120,7 +115,7 @@ int main(){
                                     if(!vGanadorEscalera[jugador]){
                                         /// GUARDAR MAXIMO PUNTAJE DE LAS TRES TIRADAS EN LA RONDA CORRESPONDIENTE
                                         mPuntajeRondaJugador[jugador][ronda]=maximoPuntajeTiradas(mPuntajesTiradas, jugador);
-                                        mostrarPuntajeRonda(mPuntajeRondaJugador[jugador][ronda]);
+                                        mostrarPuntajeRonda(mPuntajeRondaJugador[jugador][ronda], jugador);
                                         vAcuPuntajeJugador[jugador]+=mPuntajeRondaJugador[jugador][ronda];
                                         if(vAcuPuntajeJugador[jugador]>=500){
                                             /// FINALIZA JUEGO POR SUMAR QUINIENTOS PUNTOS
@@ -147,8 +142,6 @@ int main(){
                                 rlutil::anykey();
                             }
                             rlutil::anykey();
-                            stopMusica();
-                            musicaMenuPrincipal();
                             break;
                         case 2:
                             /// TRES JUGADORES
