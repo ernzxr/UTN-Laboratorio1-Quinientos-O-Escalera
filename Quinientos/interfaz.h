@@ -81,7 +81,7 @@ void mostrarPuntaje(int puntaje){
     cout<<endl;
 }
 
-void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][10], int tirada, int ronda, int jugador, int maximoPuntajeTirada, int mPuntajesTiradas[][3]){
+void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int tirada, int ronda, int jugador, int maximoPuntajeTirada, int mPuntajesTiradas[][3]){
     switch(jugador){
         case 0:
             rlutil::locate(35, 13);

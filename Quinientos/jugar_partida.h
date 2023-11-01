@@ -113,8 +113,8 @@ int sumaDeDados(int *v){
 
 /// PUNTAJES
 
-void reiniciarPuntajeJugador(int v[][10], int jugador){
-    for(int i=0;i<10;i++){
+void reiniciarPuntajeJugador(int v[][20], int jugador){
+    for(int i=0;i<20;i++){
         v[jugador][i]=0;
     }
 }
@@ -132,67 +132,74 @@ int maximoPuntajeTiradas(int v[][3], int jugador){
     return maximo;
 }
 
+void cargarPuntajes(int mPuntajeRondaJugador[][20], int mPuntajesTiradas[][3], int *vAcuPuntajeJugador, int ronda, int jugador){
+    mPuntajeRondaJugador[jugador][ronda]=maximoPuntajeTiradas(mPuntajesTiradas, jugador);
+    vAcuPuntajeJugador[jugador]+=mPuntajeRondaJugador[jugador][ronda];
+}
+
 /// REINICIAR PARTIDA
 
-void reiniciarPartida(int v[][10], int *v2, bool *v3, int *v4, int v5[][3], int jugadores){
+void reiniciarPartida(int mPuntajeRondaJugador[][20], int mPuntajesTiradas[][3], int *vAcuPuntajeJugador, int *vTiradasTotales, bool *vGanadorEscalera, bool *vGanadorQuinientos, int jugadores){
+    int i;
     for(int j=0;j<jugadores;j++){
-        v2[j]=0;
-        v3[j]=false;
-        v4[j]=0;
-        for(int i=0;i<10;i++){
-            v[j][i]=0;
+        vAcuPuntajeJugador[j]=0;
+        vTiradasTotales[j]=0;
+        vGanadorEscalera[j]=false;
+        vGanadorQuinientos[j]=false;
+        for(i=0;i<20;i++){
+            mPuntajeRondaJugador[j][i]=0;
         }
-        for(int i=0;i<3;i++){
-            v5[j][i]=0;
+        for(i=0;i<3;i++){
+            mPuntajesTiradas[j][i]=0;
         }
     }
 }
 
 /// JUGAR RONDA
 
-void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeJugadores[][10], bool *vGanadorEscalera, int *vTiradasTotales, char mJugadores[][8], int ronda, int jugadores){
+void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador[][20], bool *vGanadorEscalera, int *vTiradasTotales, char mJugadores[][8], int ronda, int jugadores){
+    int jugador;
     switch(jugadores){
         case 1:
+            jugador=0;
             for(int tirada=0;tirada<3;tirada++){
                 hacerTirada(vDados);
-                mostrarDados(vDados, 0);
-                vTiradasTotales[0]+=1;
+                mostrarDados(vDados, jugador);
+                vTiradasTotales[jugador]+=1;
                 if(escalera(vDados)){
-                    vGanadorEscalera[0]=true;
+                    vGanadorEscalera[jugador]=true;
                     return;
                 }
                 else if(sextetoSeis(vDados)){
-                    reiniciarPuntajeJugador(mPuntajeJugadores, 0);
-                    mPuntajesTiradas[0][tirada]=0; /// LA MATRIZ DE TIRADA TIENE QUE TENER UN VALOR YA QUE SE CALCULA UN MAXIMO
+                    reiniciarPuntajeJugador(mPuntajeRondaJugador, jugador);
                 }
                 else if(sexteto(vDados)){
-                    mPuntajesTiradas[0][tirada]=sexteto(vDados);
+                    mPuntajesTiradas[jugador][tirada]=sexteto(vDados);
                 }
                 else if(trio(vDados)){
-                    mPuntajesTiradas[0][tirada]=trio(vDados);
+                    mPuntajesTiradas[jugador][tirada]=trio(vDados);
                 }
                 else{
-                    mPuntajesTiradas[0][tirada]=sumaDeDados(vDados);
+                    mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
                 }
-                mostrarPuntaje(mPuntajesTiradas[0][tirada]);
-                datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, 0, maximoPuntajeTiradas(mPuntajesTiradas, 0), mPuntajesTiradas);
+                mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
+                datosPartidaJugador(mJugadores, mPuntajeRondaJugador, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas);
                 rlutil::anykey();
             }
             return;
-        case 2:
+        default:
             for(int tirada=0;tirada<3;tirada++){
-                for(int jugador=0;jugador<2;jugador++){
+                for(jugador=0;jugador<2;jugador++){
                     if(!vGanadorEscalera[jugador]){
                         hacerTirada(vDados);
-                        datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas);
+                        datosPartidaJugador(mJugadores, mPuntajeRondaJugador, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas);
                         mostrarDados(vDados, jugador);
                         vTiradasTotales[jugador]+=1;
                         if(escalera(vDados)){
                             vGanadorEscalera[jugador]=true;
                         }
                         else if(sextetoSeis(vDados)){
-                            reiniciarPuntajeJugador(mPuntajeJugadores, jugador);
-                            mPuntajesTiradas[jugador][tirada]=0; /// LA MATRIZ DE TIRADA TIENE QUE TENER UN VALOR YA QUE SE CALCULA UN MAXIMO
+                            reiniciarPuntajeJugador(mPuntajeRondaJugador, jugador);
                         }
                         else if(sexteto(vDados)){
                             mPuntajesTiradas[jugador][tirada]=sexteto(vDados);
@@ -210,13 +217,9 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeJugadores[][
                             mostrarSalioEscalera();
                         }
                     }
-                }
                 rlutil::anykey();
+                }
             }
-            return;
-        case 3:
-            return;
-        case 4:
             return;
     }
 }
