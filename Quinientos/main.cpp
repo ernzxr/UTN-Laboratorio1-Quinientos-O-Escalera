@@ -38,8 +38,6 @@ int main(){
 
         opcion = menuPrincipal(); /// MENU PRINCIPAL
 
-        rlutil::showcursor();
-
         switch(opcion){
 
             case 1:

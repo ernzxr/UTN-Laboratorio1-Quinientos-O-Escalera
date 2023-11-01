@@ -2,6 +2,7 @@
 #define JUGAR_PARTIDA_H_INCLUDED
 
 void cargarNombre(char pal[][8], int tam, int jug){
+    rlutil::cls();
     int i;
     for(int j=0; j<=jug; j++){
         solicitarNombreJugador();
@@ -14,6 +15,7 @@ void cargarNombre(char pal[][8], int tam, int jug){
         pal[j][i]='\0';
         fflush(stdin);
     }
+    rlutil::cls();
 }
 
 void hacerTirada(int *v){
@@ -211,7 +213,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                             mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
                         }
                         if(!vGanadorEscalera[jugador]){
-                            mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
+                            mostrarPuntaje(mPuntajesTiradas[jugador][tirada],jugador);
                         }
                         else{
                             mostrarSalioEscalera();
