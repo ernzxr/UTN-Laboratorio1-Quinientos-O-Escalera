@@ -1,8 +1,6 @@
 #ifndef COLOR_H_INCLUDED
 #define COLOR_H_INCLUDED
 
-
-
 void digitoErroneoMenu(int numero){
         if(numero>4 || numero<0){
         rlutil::setColor(rlutil::RED);

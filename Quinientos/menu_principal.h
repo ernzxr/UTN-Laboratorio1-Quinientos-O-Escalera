@@ -1,6 +1,6 @@
 #ifndef MENU_PRINCIPAL_H_INCLUDED
 #define MENU_PRINCIPAL_H_INCLUDED
-#include "color.h"
+
 int menuPrincipal(){
     int num, y=0;
     rlutil::locate(48, 11 + y);

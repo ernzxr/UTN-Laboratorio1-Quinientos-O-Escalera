@@ -1,10 +1,6 @@
 #ifndef JUGAR_PARTIDA_H_INCLUDED
 #define JUGAR_PARTIDA_H_INCLUDED
 
-void solicitarNombreJugador(){
-    cout<<"INGRESE SU NOMBRE [AAA-AAA]: ";
-}
-
 void cargarNombre(char pal[][8], int tam, int jug){
     int i;
     for(int j=0; j<=jug; j++){
@@ -30,7 +26,7 @@ void inicializarSemilla() {
     srand(time(NULL));
 }
 
-/// JUGADAS
+/// COMBINACIONES JUGADAS
 
 bool escalera(int *v){
     for(int j=1;j<=6;j++){
@@ -115,7 +111,13 @@ int sumaDeDados(int *v){
     return acumulador;
 }
 
-/// JUGAR RONDA
+/// PUNTAJES
+
+void reiniciarPuntajeJugador(int v[][10], int jugador){
+    for(int i=0;i<10;i++){
+        v[jugador][i]=0;
+    }
+}
 
 int maximoPuntajeTiradas(int v[][3], int jugador){
     int maximo;
@@ -130,11 +132,7 @@ int maximoPuntajeTiradas(int v[][3], int jugador){
     return maximo;
 }
 
-void reiniciarPuntajeJugador(int v[][10], int jugador){
-    for(int i=0;i<10;i++){
-        v[jugador][i]=0;
-    }
-}
+/// REINICIAR PARTIDA
 
 void reiniciarPartida(int v[][10], int *v2, bool *v3, int *v4, int v5[][3], int jugadores){
     for(int j=0;j<jugadores;j++){
@@ -150,124 +148,76 @@ void reiniciarPartida(int v[][10], int *v2, bool *v3, int *v4, int v5[][3], int 
     }
 }
 
-void mostrarTiradasYRondas(int tiradasTotales, int ronda){
-    cout<<"TIRADAS: "<<tiradasTotales<<endl;
-    cout<<"RONDAS JUGADAS: "<<ronda<<endl;
-}
-
-void terminarPartidaPorQuinientos(int tiradasTotales, int ronda, int puntaje){
-    cout<<endl;
-    cout<<"QUINIENTOS - GANASTE! "<<endl;
-    mostrarTiradasYRondas(tiradasTotales, ronda);
-    cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
-    cout<<endl;
-}
-
-void terminarPartidaPorEscalera(int tiradasTotales, int ronda){
-    cout<<endl;
-    cout<<"ESCALERA - GANASTE! "<<endl;
-    mostrarTiradasYRondas(tiradasTotales, ronda);
-    cout<<endl;
-}
-
-void terminarPartidaPorRondasMaximas(int tiradasTotales, int ronda, int puntaje){
-    cout<<endl;
-    mostrarTiradasYRondas(tiradasTotales, ronda);
-    cout<<"PUNTAJE TOTAL: "<<puntaje<<endl;
-    cout<<endl;
-}
-
-void mostrarPuntajeAcumulado(int tiradasTotales, int ronda, int puntaje){
-    mostrarTiradasYRondas(tiradasTotales, ronda);
-    cout<<"PUNTAJE ACTUAL: "<<puntaje<<endl;
-    cout<<endl;
-}
-
-void mostrarDados(int *v){
-    for(int i=0;i<6;i++){
-        cout<<v[i]<<" ";
-    }
-}
-
-void mostrarPuntaje(int puntaje){
-    cout<<endl;
-    cout<<"PUNTAJE: "<<puntaje;
-    cout<<endl;
-}
-
-void mostrarPuntajeRonda(int puntajeRonda){
-    cout<<endl;
-    cout<<"MAXIMO PUNTAJE DE LA RONDA: "<<puntajeRonda<<endl;
-}
+/// JUGAR RONDA
 
 void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeJugadores[][10], bool *vGanadorEscalera, int *vTiradasTotales, char mJugadores[][8], int ronda, int jugadores){
-    if(jugadores==1){
-        for(int tirada=0;tirada<3;tirada++){
-            hacerTirada(vDados);
-            mostrarDados(vDados);
-            vTiradasTotales[0]+=1;
-            if(escalera(vDados)){
-                vGanadorEscalera[0]=true;
-                return;
+    switch(jugadores){
+        case 1:
+            for(int tirada=0;tirada<3;tirada++){
+                hacerTirada(vDados);
+                datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, 0, maximoPuntajeTiradas(mPuntajesTiradas, 0));
+                mostrarDados(vDados, 0);
+                vTiradasTotales[0]+=1;
+                if(escalera(vDados)){
+                    vGanadorEscalera[0]=true;
+                    return;
+                }
+                else if(sextetoSeis(vDados)){
+                    reiniciarPuntajeJugador(mPuntajeJugadores, 0);
+                    mPuntajesTiradas[0][tirada]=0; /// LA MATRIZ DE TIRADA TIENE QUE TENER UN VALOR YA QUE SE CALCULA UN MAXIMO
+                }
+                else if(sexteto(vDados)){
+                    mPuntajesTiradas[0][tirada]=sexteto(vDados);
+                }
+                else if(trio(vDados)){
+                    mPuntajesTiradas[0][tirada]=trio(vDados);
+                }
+                else{
+                    mPuntajesTiradas[0][tirada]=sumaDeDados(vDados);
+                }
+                mostrarPuntaje(mPuntajesTiradas[0][tirada]);
+                rlutil::anykey();
             }
-            else if(sextetoSeis(vDados)){
-                reiniciarPuntajeJugador(mPuntajeJugadores, 0);
-                mPuntajesTiradas[0][tirada]=0; /// LA MATRIZ DE TIRADA TIENE QUE TENER UN VALOR YA QUE SE CALCULA UN MAXIMO
-            }
-            else if(sexteto(vDados)){
-                mPuntajesTiradas[0][tirada]=sexteto(vDados);
-            }
-            else if(trio(vDados)){
-                mPuntajesTiradas[0][tirada]=trio(vDados);
-            }
-            else{
-                mPuntajesTiradas[0][tirada]=sumaDeDados(vDados);
-            }
-            mostrarPuntaje(mPuntajesTiradas[0][tirada]);
-            system("pause");
-        }
-    }
-    else if(jugadores==2){
-        for(int tirada=0;tirada<3;tirada++){
-            for(int jugador=0;jugador<2;jugador++){
-                if(!vGanadorEscalera[jugador]){
-                    hacerTirada(vDados);
-                    cout<<"TIRADA DE: "<<mJugadores[jugador]<<endl;
-                    cout<<"RONDA NUMERO "<<ronda<<endl;
-                    cout<<"TIRADA NUMERO "<<tirada+1<<endl;
-                    cout<<"PUNTAJE TOTAL ACTUAL "<<mPuntajeJugadores[jugador][ronda-1]<<endl;
-                    if(tirada>0)cout<<"PUNTAJE PROVISORIO "<<maximoPuntajeTiradas(mPuntajesTiradas, jugador)<<endl;
-                    mostrarDados(vDados);
-                    vTiradasTotales[jugador]+=1;
-                    if(escalera(vDados)){
-                        vGanadorEscalera[jugador]=true;
-                    }
-                    else if(sextetoSeis(vDados)){
-                        reiniciarPuntajeJugador(mPuntajeJugadores, jugador);
-                        mPuntajesTiradas[jugador][tirada]=0; /// LA MATRIZ DE TIRADA TIENE QUE TENER UN VALOR YA QUE SE CALCULA UN MAXIMO
-                    }
-                    else if(sexteto(vDados)){
-                        mPuntajesTiradas[jugador][tirada]=sexteto(vDados);
-                    }
-                    else if(trio(vDados)){
-                        mPuntajesTiradas[jugador][tirada]=trio(vDados);
-                    }
-                    else{
-                        mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
-                    }
+            return;
+        case 2:
+            for(int tirada=0;tirada<3;tirada++){
+                for(int jugador=0;jugador<2;jugador++){
                     if(!vGanadorEscalera[jugador]){
-                        mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
-                        cout<<endl;
-                    }
-                    else{
-                        cout<<endl;
-                        cout<<"ESCALERA!"<<endl;
+                        hacerTirada(vDados);
+                        datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador));
+                        mostrarDados(vDados, jugador);
+                        vTiradasTotales[jugador]+=1;
+                        if(escalera(vDados)){
+                            vGanadorEscalera[jugador]=true;
+                        }
+                        else if(sextetoSeis(vDados)){
+                            reiniciarPuntajeJugador(mPuntajeJugadores, jugador);
+                            mPuntajesTiradas[jugador][tirada]=0; /// LA MATRIZ DE TIRADA TIENE QUE TENER UN VALOR YA QUE SE CALCULA UN MAXIMO
+                        }
+                        else if(sexteto(vDados)){
+                            mPuntajesTiradas[jugador][tirada]=sexteto(vDados);
+                        }
+                        else if(trio(vDados)){
+                            mPuntajesTiradas[jugador][tirada]=trio(vDados);
+                        }
+                        else{
+                            mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
+                        }
+                        if(!vGanadorEscalera[jugador]){
+                            mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
+                        }
+                        else{
+                            mostrarSalioEscalera();
+                        }
                     }
                 }
+                rlutil::anykey();
             }
-            system("pause");
-            cout<<endl;
-        }
+            return;
+        case 3:
+            return;
+        case 4:
+            return;
     }
 }
 

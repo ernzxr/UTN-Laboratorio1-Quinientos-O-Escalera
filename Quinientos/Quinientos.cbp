@@ -36,6 +36,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="color.h" />
+		<Unit filename="interfaz.h" />
 		<Unit filename="jugar_partida.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="menu_principal.h" />

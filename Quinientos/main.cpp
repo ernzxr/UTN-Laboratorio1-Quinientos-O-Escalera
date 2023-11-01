@@ -8,11 +8,14 @@
 using namespace std;
 
 #include "rlutil.h"
+#include "color.h"
 #pragma comment(lib, "winmm.lib") /// VER .h
+#include "musica.h"
+#include "dados.h"
+#include "interfaz.h"
 #include "menu_principal.h"
 #include "jugar_partida.h"
-#include "musica.h"
-#include "color.h"
+
 
 int main(){
     int const CANTIDAD_JUGADORES=4, TOP=10;
