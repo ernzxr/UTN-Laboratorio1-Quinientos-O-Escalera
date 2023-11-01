@@ -32,7 +32,13 @@ int main(){
     while(true){
         rlutil::cls();
         if(!mute)musicaMenuPrincipal(); /// MUSICA
+
+        rlutil::hidecursor();
+
         opcion = menuPrincipal(); /// MENU PRINCIPAL
+
+        rlutil::showcursor();
+
         switch(opcion){
 
             case 1:
@@ -148,9 +154,6 @@ int main(){
                         case 0:
                             /// VOLVER
                             break;
-                        default:
-                            cout<<"OPCION INVALIDA"<<endl;
-                            break;
                     }
                 }
                 break;
@@ -185,9 +188,6 @@ int main(){
                                     case 0:
                                         /// VOLVER
                                         break;
-                                    default:
-                                        cout<<"OPCION INVALIDA"<<endl;
-                                        break;
                                 }
                             }
                             /// SE CAMBIA OPCION A -1 PARA NO CERRAR EL WHILE DE MENU OPCIONES
@@ -213,9 +213,6 @@ int main(){
                                     case 0:
                                         /// VOLVER
                                         break;
-                                    default:
-                                        cout<<"OPCION INVALIDA"<<endl;
-                                        break;
                                 }
                             }
                             /// SE CAMBIA OPCION A -1 PARA NO CERRAR EL WHILE DE MENU OPCIONES
@@ -224,18 +221,12 @@ int main(){
                         case 0:
                             /// VOLVER
                             break;
-                        default:
-                            cout<<"OPCION INVALIDA"<<endl;
-                            break;
                     }
                 }
                 break;
             case 0:
                 /// CERRAR JUEGO
                 return 0;
-            default:
-                cout<<"OPCION INVALIDA"<<endl;
-                break;
         }
     }
 }

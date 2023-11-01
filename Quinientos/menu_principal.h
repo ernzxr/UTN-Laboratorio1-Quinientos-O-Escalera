@@ -2,26 +2,73 @@
 #define MENU_PRINCIPAL_H_INCLUDED
 
 int menuPrincipal(){
-    int num, y=0;
-    rlutil::locate(48, 11 + y);
-    cout<< char(175)<<endl;
-    rlutil::locate(50, 9);
-    cout<<"BIENVENIDOS"<<endl;
-    rlutil::locate(50, 11);
-    cout<<"UN JUGADOR [1]"<<endl;
-    rlutil::locate(50, 12);
-    cout<<"MULTIJUGADOR [2]"<<endl;
-    rlutil::locate(50, 13);
-    cout<<"RANKING [3]"<<endl;
-    rlutil::locate(50, 14);
-    cout<<"OPCIONES [4]"<<endl;
-    rlutil::locate(50, 15);
-    cout<<"SALIR [0]"<<endl;
-    rlutil::locate(50, 16);
-    cin>>num;
-    digitoErroneoMenu(num);
+    int opcion = 1, maxOpciones = 5;
+
+    while(true) {
+        rlutil::cls();
+
+        for(int i=1; i<=maxOpciones; i++) {
+            if(i == opcion) {
+                rlutil::setColor(rlutil::LIGHTGREEN);
+            }
+            else {
+                rlutil::setColor(rlutil::WHITE);
+            }
+
+            rlutil::locate(50, 10 + i);
+            cout<< i<< " - ";
+            switch (i) {
+                case 1:
+                    cout << "UN JUGADOR";
+                    break;
+                case 2:
+                    cout << "MULTIJUGADOR";
+                    break;
+                case 3:
+                    cout << "RANKING";
+                    break;
+                case 4:
+                    cout << "OPCIONES";
+                    break;
+                case 5:
+                    cout << "SALIR";
+                    break;
+                default:
+                    cout << "OPCION INVALIDA";
+                    break;
+            }
+        }
+
+        rlutil::resetColor();
+
+        char tecla = rlutil::getkey();
+
+        switch (tecla) {
+            case 14:
+                opcion--;
+                if (opcion < 1) {
+                    opcion = 1;
+                }
+                break;
+            case 15:
+                opcion++;
+                if (opcion > 5) {
+                    opcion = 5;
+                }
+                break;
+            case 1:
+                if(opcion == 5) {
+                    opcion = 0;
+                }
+                return opcion;
+            default:
+                break;
+        }
+    }
 
 }
+
+
 int menuMultijugador(){
     int num;
     rlutil::locate(50, 9);
@@ -37,7 +84,7 @@ int menuMultijugador(){
     rlutil::locate(50, 15);
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
-    DigitoErroneoMulti(num);
+    return num;
 }
 int menuOpciones(){
     int num;
@@ -52,7 +99,7 @@ int menuOpciones(){
     rlutil::locate(50, 14);
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
-    DigitoErroneoOpc(num);
+    return num;
 }
 int menuSonido(){
     int num;
@@ -69,7 +116,7 @@ int menuSonido(){
     rlutil::locate(50, 15);
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
-    DigitoErroneoMenuSonido(num);
+    return num;
 }
 int menuColor(){
     int num;
@@ -86,20 +133,9 @@ int menuColor(){
     rlutil::locate(50, 15);
     cout<<"ELIJA UNA OPCION: ";
     cin>>num;
-    DigitoErroneoMenucolor(num);
+    return num;
 }
 
-void scrollMenu(int key, int y) {
-    switch(key) {
-        case 14:
-            y--;
-        break;
-        case 15:
-            y++;
-        break;
-        case 1:
-        break;
-    }
-}
+
 
 #endif // MENU_PRINCIPAL_H_INCLUDED
