@@ -7,6 +7,8 @@ int menuPrincipal(){
     bordeHorizontal(35, 17, 50);
     bordeVertical(35, 10, 7);
     bordeVertical(84, 10, 7);
+    bordeVertical(36, 10, 7);
+    bordeVertical(83, 10, 7);
 
     while(true) {
         for(int i=1; i<=maxOpciones; i++) {

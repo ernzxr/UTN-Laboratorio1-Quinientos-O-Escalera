@@ -155,7 +155,6 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeJugadores[][
         case 1:
             for(int tirada=0;tirada<3;tirada++){
                 hacerTirada(vDados);
-                datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, 0, maximoPuntajeTiradas(mPuntajesTiradas, 0));
                 mostrarDados(vDados, 0);
                 vTiradasTotales[0]+=1;
                 if(escalera(vDados)){
@@ -176,6 +175,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeJugadores[][
                     mPuntajesTiradas[0][tirada]=sumaDeDados(vDados);
                 }
                 mostrarPuntaje(mPuntajesTiradas[0][tirada]);
+                datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, 0, maximoPuntajeTiradas(mPuntajesTiradas, 0), mPuntajesTiradas);
                 rlutil::anykey();
             }
             return;
@@ -184,7 +184,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeJugadores[][
                 for(int jugador=0;jugador<2;jugador++){
                     if(!vGanadorEscalera[jugador]){
                         hacerTirada(vDados);
-                        datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador));
+                        datosPartidaJugador(mJugadores, mPuntajeJugadores, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas);
                         mostrarDados(vDados, jugador);
                         vTiradasTotales[jugador]+=1;
                         if(escalera(vDados)){

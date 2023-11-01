@@ -48,11 +48,11 @@ int main(){
                 maxRondas=10, ronda=0, tiradasTotales=0, jugador=1, jugadores=1;
                 escalera=false, quinientos=false;
 
-                if(!mute)playMusicaPartida(); /// MUSICA PARTIDA
-
                 reiniciarPartida(mPuntajeRondaJugador, vAcuPuntajeJugador, vGanadorEscalera, vTiradasTotales, mPuntajesTiradas, CANTIDAD_JUGADORES);
 
                 cargarNombre(mJugadores, 7, jugador-1);
+
+                if(!mute)playMusicaPartida(); /// MUSICA PARTIDA
 
                 /// SE JUEGAN LA CANTIDAD MAXIMA DE RONDAS INDICADAS
                 while(ronda<maxRondas && !escalera && !quinientos){
@@ -103,11 +103,14 @@ int main(){
                             maxRondas=10, ronda=0, tiradasTotales=0, jugadores=2;
                             escalera=false, quinientos=false;
 
-                            if(!mute)playMusicaPartida(); /// MUSICA PARTIDA
+
 
                             reiniciarPartida(mPuntajeRondaJugador, vAcuPuntajeJugador, vGanadorEscalera, vTiradasTotales, mPuntajesTiradas, CANTIDAD_JUGADORES);
 
                             cargarNombre(mJugadores, 7, jugadores-1); /// SE SOLICITAN DOS NOMBRES
+
+                            if(!mute)playMusicaPartida(); /// MUSICA PARTIDA
+
                             cout<<"\n";
                             /// SE JUEGAN LA CANTIDAD MAXIMA DE RONDAS INDICADAS
                             while(ronda<maxRondas && !escalera && !quinientos){
@@ -144,6 +147,8 @@ int main(){
                                 rlutil::anykey();
                             }
                             rlutil::anykey();
+                            stopMusica();
+                            musicaMenuPrincipal();
                             break;
                         case 2:
                             /// TRES JUGADORES
