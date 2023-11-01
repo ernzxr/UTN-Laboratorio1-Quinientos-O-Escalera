@@ -1,6 +1,31 @@
 #ifndef INTERFAZ_H_INCLUDED
 #define INTERFAZ_H_INCLUDED
 
+/// INTERFAZ MENU PRINCIPAL
+
+void bordeHorizontal(int x, int y, int limite) {
+    for(int i=0; i<limite; i++) {
+        rlutil::locate(x + i, y);
+        cout<<(char)177;
+    }
+
+    for(int i=0; i<limite; i++) {
+        rlutil::locate(x + i, y);
+        cout<<(char)178;
+        Sleep(10);
+    }
+}
+
+void bordeVertical(int x, int y, int limite) {
+    for(int i=0; i<limite; i++) {
+        rlutil::locate(x, y + i);
+        cout<<(char)177;
+
+    }
+}
+
+
+
 /// INTERFAZ UN JUGADOR
 
 /// INTERFAZ DOS JUGADORES

@@ -3,10 +3,12 @@
 
 int menuPrincipal(){
     int opcion = 1, maxOpciones = 5;
+    bordeHorizontal(35, 9, 50);
+    bordeHorizontal(35, 17, 50);
+    bordeVertical(35, 10, 7);
+    bordeVertical(84, 10, 7);
 
     while(true) {
-        rlutil::cls();
-
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {
                 rlutil::setColor(rlutil::LIGHTGREEN);
@@ -33,9 +35,6 @@ int menuPrincipal(){
                 case 5:
                     cout << "SALIR";
                     break;
-                default:
-                    cout << "OPCION INVALIDA";
-                    break;
             }
         }
 
@@ -60,12 +59,12 @@ int menuPrincipal(){
                 if(opcion == 5) {
                     opcion = 0;
                 }
+                rlutil::cls();
                 return opcion;
             default:
                 break;
         }
     }
-
 }
 
 
