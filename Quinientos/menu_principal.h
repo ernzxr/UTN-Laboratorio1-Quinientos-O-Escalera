@@ -211,8 +211,70 @@ int opcion = 1, maxOpciones = 4;
     }
 
 }
-int menuOpciones(){
 
+
+int menuMusica(){
+int opcion = 1, maxOpciones = 3;
+
+    while(true) {
+
+        for(int i=1; i<=maxOpciones; i++) {
+            if(i == opcion) {
+                rlutil::setColor(rlutil::LIGHTGREEN);
+                rlutil::locate(48,11 + i);
+                std::cout << (char)62 << std::endl;
+            }
+            else {
+                rlutil::setColor(rlutil::WHITE);
+            }
+
+            rlutil::locate(50, 11 + i);
+            switch (i) {
+                case 1:
+                cout<<"MUSICA ON "<<endl;
+                break;
+                case 2:
+                cout<<"MUSICA OFF "<<endl;
+                break;
+                case 3:
+                cout<<"VOLVER AL INICIO "<<endl;
+                break;
+                default:
+                break;
+            }
+        }
+
+        char tecla = rlutil::getkey();
+
+        switch (tecla) {
+            case 14:
+                rlutil::locate(48,11 + opcion);
+                std::cout << " " << std::endl;
+                opcion--;
+                if (opcion < 1) {
+                    opcion = 1;
+                }
+                break;
+            case 15:
+                rlutil::locate(48,11 + opcion);
+                std::cout << " " << std::endl;
+                opcion++;
+                if (opcion > 3) {
+                    opcion = 3;
+                }
+                break;
+            case 1:
+                if(opcion == 3) {
+                    opcion = 0;
+                }
+                return opcion;
+            default:
+                break;
+        }
+    }
+}
+
+int menuOpciones(){
     int opcion = 1, maxOpciones = 3;
 
     while(true) {
@@ -272,10 +334,8 @@ int menuOpciones(){
                 break;
         }
     }
-
-
-
 }
+
 int menuSonido(){
 
 int opcion = 1, maxOpciones = 4;

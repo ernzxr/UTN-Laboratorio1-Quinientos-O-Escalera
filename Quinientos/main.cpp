@@ -22,24 +22,26 @@ int main(){
     int opcion, opcionRondas, maxRondas, ronda, tiradasTotales, jugador, jugadores, validarGanador, cQuinientos, cEscalera;
     int mPuntajeRondaJugador[CANTIDAD_JUGADORES][20], vTiradasTotales[CANTIDAD_JUGADORES], vAcuPuntajeJugador[CANTIDAD_JUGADORES], vDados[6], mPuntajesTiradas[CANTIDAD_JUGADORES][3], mTiradaMinimaQuinientos[CANTIDAD_JUGADORES][2];
     char mJugadores[CANTIDAD_JUGADORES][8], mRanking[TOP][8];
-    bool escalera, quinientos, mute=false, desempate, iniciarPartida, volverInicio;
+    bool escalera, quinientos, mute, desempate, iniciarPartida, volverInicio;
     bool vGanadorEscalera[CANTIDAD_JUGADORES], vGanadorQuinientos[CANTIDAD_JUGADORES];
 
     inicializarSemilla();
-
     colorFondo();
+    rlutil::hidecursor();
 
-    if(!mute)musicaMenuPrincipal(); /// MUSICA
+    opcion = menuMusica();
+    switch(opcion){
+        case 1:
+            mute=true;
+        case 2:
+            mute=false;
+    }
 
     while(true){
+        if(!mute)musicaMenuPrincipal(); /// MUSICA
         rlutil::cls();
-
-        rlutil::hidecursor();
-
         opcion = menuPrincipal(); /// MENU PRINCIPAL
-
         switch(opcion){
-
             case 1:
                 /// UN JUGADOR
                 iniciarPartida=true;
