@@ -141,18 +141,29 @@ void solicitarNombreJugador(){
     cout<<"INGRESE SU NOMBRE [AAA-AAA]: ";
 }
 
-void terminarPartidaPorQuinientos(char mJugadores[][8], bool *vGanadorQuinientos, int validarGanador, int tiradasTotales, int ronda, int puntaje, int jugadores, bool desempate){
+void terminarPartidaPorQuinientos(char mJugadores[][8], bool *vGanadorQuinientos, int validarGanador, int *vTiradasTotales, int ronda, int puntaje, int jugadores, int mTiradaMinimaQuinientos[][2], bool desempate){
     if(desempate){
-        if(validarGanador==-1){
+        if(validarGanador<jugadores){
+            cout<<endl;
+            cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
+            cout<<"GANO POR LLEGAR A QUINIENTOS!"<<endl;
+            cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
+            mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
+            rlutil::anykey();
+            cout<<endl;
+        }
+        else{
+            int tiradasGanadores;
             cout<<endl;
             cout<<"INSOLITO EMPATE POR QUINIENTOS ENTRE"<<endl;
-            for(int i=0;i<jugadores;i++){
-                if(vGanadorQuinientos[i]){
-                    cout<<"JUGADOR "<<mJugadores[i]<<endl;
+            for(int jugador=0;jugador<jugadores;jugador++){
+                if(vGanadorQuinientos[jugador] && mTiradaMinimaQuinientos[jugador][1]==validarGanador){
+                    tiradasGanadores=jugador;
+                    cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
                 }
             }
             rlutil::anykey();
-            mostrarTiradasYRondas(tiradasTotales, ronda);
+            mostrarTiradasYRondas(vTiradasTotales[tiradasGanadores], ronda);
             cout<<endl;
         }
     }
@@ -161,25 +172,26 @@ void terminarPartidaPorQuinientos(char mJugadores[][8], bool *vGanadorQuinientos
         cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
         cout<<"GANO POR LLEGAR A QUINIENTOS!"<<endl;
         cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
-        mostrarTiradasYRondas(tiradasTotales, ronda);
+        mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
         rlutil::anykey();
         cout<<endl;
     }
 }
 
-void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, int *vAcuPuntajeJugador, int tiradasTotales, int ronda, int validarGanador, int jugadores, bool desempate){
+void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, int *vAcuPuntajeJugador, int *vTiradasTotales, int ronda, int validarGanador, int jugadores, bool desempate){
     rlutil::cls();
+    int jugador;
     if(desempate){
         if(validarGanador==-1){
             cout<<endl;
             cout<<"INSOLITO EMPATE POR ESCALERA ENTRE"<<endl;
-            for(int i=0;i<jugadores;i++){
-                if(vGanadorEscalera[i] && vAcuPuntajeJugador[i]==0){
-                    cout<<"JUGADOR "<<mJugadores[i]<<endl;
+            for(jugador=0;jugador<jugadores;jugador++){
+                if(vGanadorEscalera[jugador] && vAcuPuntajeJugador[jugador]==0){
+                    cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
                 }
             }
             rlutil::anykey();
-            mostrarTiradasYRondas(tiradasTotales, ronda);
+            mostrarTiradasYRondas(1, ronda);
             cout<<endl;
         }
         else if(validarGanador<jugadores){
@@ -187,19 +199,21 @@ void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, in
             cout<<"EL GANADOR DEL DESEMPATE POR ESCALERA FUE"<<endl;
             cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
             rlutil::anykey();
-            mostrarTiradasYRondas(tiradasTotales, ronda);
+            mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
             cout<<endl;
         }
         else{
+            int tiradasGanadores;
             cout<<endl;
             cout<<"INSOLITO EMPATE POR ESCALERA ENTRE"<<endl;
-            for(int i=0;i<jugadores;i++){
-                if(vGanadorEscalera[i] && vAcuPuntajeJugador[i]==validarGanador){
-                    cout<<"JUGADOR "<<mJugadores[i]<<endl;
+            for(jugador=0;jugador<jugadores;jugador++){
+                if(vGanadorEscalera[jugador] && vAcuPuntajeJugador[jugador]==validarGanador){
+                    tiradasGanadores=jugador;
+                    cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
                 }
             }
             rlutil::anykey();
-            mostrarTiradasYRondas(tiradasTotales, ronda);
+            mostrarTiradasYRondas(vTiradasTotales[tiradasGanadores], ronda);
             cout<<endl;
         }
     }
@@ -208,7 +222,7 @@ void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, in
         cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
         cout<<"GANO POR SACAR ESCALERA!"<<endl;
         rlutil::anykey();
-        mostrarTiradasYRondas(tiradasTotales, ronda);
+        mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
         cout<<endl;
     }
 }
@@ -227,32 +241,6 @@ void terminarPartidaPorRondasMaximas(char mJugadores[][8], int tiradasTotales, i
     cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
 }
 
-void terminarPartidaPorEscalera(int tiradasTotales, int ronda, int jugador){
-    if(jugador==0){
-    rlutil::locate(12,27);
-    cout<<"ESCALERA - GANASTE! ";
-    mostrarTiradasYRondas(tiradasTotales, ronda);
-    }
-    else{
-    rlutil::locate(86,27);
-    cout<<"ESCALERA - GANASTE! ";
-    mostrarTiradasYRondas(tiradasTotales, ronda);}
-    }
-
-
-void terminarPartidaPorRondasMaximas(int tiradasTotales, int ronda, int puntaje,int jugador){
-    if(jugador==0){
-    rlutil::locate(12,25);
-    mostrarTiradasYRondas(tiradasTotales, ronda);
-    cout<<"PUNTAJE TOTAL: "<<puntaje<<endl;
-    }
-    else {
-    rlutil::locate(86,25);
-    mostrarTiradasYRondas(tiradasTotales, ronda);
-    cout<<"PUNTAJE TOTAL: "<<puntaje<<endl;
-    }
-}
-
 void mostrarPuntaje(int puntaje,int jugador){
     if(jugador==0){
         rlutil::locate(15,18);
@@ -263,7 +251,6 @@ void mostrarPuntaje(int puntaje,int jugador){
         cout<<"PUNTAJE: "<<puntaje<<endl;
 
     }
-
 }
 
 void mostrarPuntajeRonda(int puntajeRonda, int jugador){
