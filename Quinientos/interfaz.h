@@ -235,7 +235,6 @@ void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, in
                 cout<<"RONDAS JUGADAS: "<<ronda<<endl;
                 rlutil::anykey();
                 //mostrarTiradasYRondas(vTiradasTotales[tiradasGanadores], ronda);
-
         }
     }
     else{
@@ -251,18 +250,33 @@ void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, in
     }
 }
 
-void terminarPartidaPorRondasMaximas(char mJugadores[][8], int tiradasTotales, int ronda, int puntaje, int jugador){
-    if(jugador==0){
-    rlutil::locate(11,21);
-    cout<<"QUINIENTOS - GANASTE! "<<endl;
-    mostrarTiradasYRondas(tiradasTotales, ronda);
-    cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
+void terminarPartidaPorRondasMaximas(char mJugadores[][8], int validarGanador, int ronda, int *vAcuPuntajeJugador, int jugadores){
+    if(validarGanador<jugadores){
+        rlutil::locate(48,7);
+        cout<<"EL GANADOR LA PARTIDA FUE "<<mJugadores[validarGanador]<<endl;
+        rlutil::locate(48,8);
+        cout<<"CON UN TOTAL DE "<<vAcuPuntajeJugador[validarGanador]<<" PUNTOS"<<endl;
+        rlutil::locate(48,9);
+        cout<<"RONDAS JUGADAS: "<<ronda<<endl;
+        rlutil::anykey();
     }
-    else{}
-    rlutil::locate(11,86);
-    cout<<"QUINIENTOS - GANASTE! "<<endl;
-    mostrarTiradasYRondas(tiradasTotales, ronda);
-    cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
+    else{
+        int puntosGanadores,x=8;
+        puntosGanadores = validarGanador;
+        rlutil::locate(48,7);
+        cout<<"INSOLITO EMPATE CON "<<puntosGanadores<<" PUNTOS"<<endl;
+        for(int jugador=0;jugador<jugadores;jugador++){
+            if(vAcuPuntajeJugador[jugador]==puntosGanadores){
+                rlutil::locate(48,x);
+                cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
+            }
+            x++;
+        }
+        rlutil::locate(48,x);
+        cout<<"RONDAS JUGADAS: "<<ronda<<endl;
+        rlutil::anykey();
+        //mostrarTiradasYRondas(vTiradasTotales[puntosGanadores], ronda);
+    }
 }
 
 void mostrarPuntaje(int puntaje,int jugador){

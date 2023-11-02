@@ -96,16 +96,15 @@ int main(){
                             escalera=true;
                             terminarPartidaPorEscalera(mJugadores, vGanadorEscalera, vAcuPuntajeJugador, vTiradasTotales, ronda, validarGanador, jugadores, false);
                         }
+                        /// FINALIZAR PARTIDA POR MAXIMO DE RONDAS
+                        if(ronda==maxRondas){
+                            terminarPartidaPorRondasMaximas(mJugadores, jugador, ronda, vAcuPuntajeJugador, jugadores);
+                        }
+                        /// SE MUESTRA EL RESULTADO DE LA RONDA
+                        else {
+                            resultadosRonda(mJugadores, vAcuPuntajeJugador, ronda, jugadores);
+                        }
                     }
-                    /// FINALIZAR PARTIDA POR MAXIMO DE RONDAS
-                    if(ronda==maxRondas){
-                        terminarPartidaPorRondasMaximas(mJugadores, vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador], jugador);
-                    }
-                    /// SE MUESTRA EL RESULTADO DE LA RONDA
-                    else {
-                        resultadosRonda(mJugadores, vAcuPuntajeJugador, ronda, jugadores);
-                    }
-                    rlutil::anykey();
                     if(!mute)musicaMenuPrincipal();
                     iniciarPartida=false;
                     opcion=0;
@@ -219,8 +218,8 @@ int main(){
                                     }
                                     /// FINALIZAR PARTIDA POR MAXIMO DE RONDAS
                                     else if(ronda==maxRondas){
-                                        validarGanador = ganadorMaximasRondas();
-                                        terminarPartidaPorRondasMaximas(mJugadores, vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador], jugador);
+                                        validarGanador = ganadorMaximasRondas(vAcuPuntajeJugador, jugadores);
+                                        terminarPartidaPorRondasMaximas(mJugadores, validarGanador, ronda, vAcuPuntajeJugador, jugadores);
                                     }
                                     /// SE MUESTRA EL RESULTADO DE LA RONDA
                                     else {

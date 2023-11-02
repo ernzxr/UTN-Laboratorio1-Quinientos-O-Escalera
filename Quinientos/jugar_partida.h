@@ -162,7 +162,28 @@ void reiniciarPartida(int mTiradaMinimaQuinientos[][2], int mPuntajeRondaJugador
 
 /// JUGAR RONDA
 
-int ganadorMaximasRondas(){
+int ganadorMaximasRondas(int *vAcuPuntajeJugador, int jugadores){
+    int maximoPuntaje, jugador, jugadorGanador;
+    bool primerMaximo=false, empatePuntaje=false;
+    for(jugador=0;jugador<jugadores;jugador++){
+        if(!primerMaximo){
+            primerMaximo=true;
+            maximoPuntaje=vAcuPuntajeJugador[jugador];
+            jugadorGanador=jugador;
+        }
+        else if(vAcuPuntajeJugador[jugador]==maximoPuntaje){
+            empatePuntaje=true;
+        }
+        else if(vAcuPuntajeJugador[jugador]>maximoPuntaje){
+            empatePuntaje=false;
+            maximoPuntaje=vAcuPuntajeJugador[jugador];
+            jugadorGanador=jugador;
+        }
+    }
+    if(empatePuntaje){
+        return maximoPuntaje;
+    }
+    return jugadorGanador;
 }
 
 int desempateQuinientos(bool *vGanadorQuinientos, int *vAcuPuntajeJugador, int mTiradaMinimaQuinientos[][2], int jugadores){
@@ -307,7 +328,6 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                     vTiradasTotales[jugador]+=1;
                     if(escalera(vDados)){
                         vGanadorEscalera[jugador]=true;
-                        cout<<"ESCALERA";
                     }
                     else if(sextetoSeis(vDados)){
                         reiniciarPuntajeJugador(mPuntajeRondaJugador, jugador);
