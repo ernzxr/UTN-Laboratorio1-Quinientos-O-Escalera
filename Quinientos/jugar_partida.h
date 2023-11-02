@@ -294,7 +294,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                 else{
                     mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
                 }
-                mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
+                    mostrarPuntaje(mPuntajesTiradas[jugador][tirada], jugador);
                 rlutil::anykey();
             }
             return;
@@ -326,7 +326,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                         mTiradaMinimaQuinientos[jugador][0]=vTiradasTotales[jugador];
                         mTiradaMinimaQuinientos[jugador][1]=vAcuPuntajeJugador[jugador]+mPuntajesTiradas[jugador][tirada];
                     }
-                    mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
+                    mostrarPuntaje(mPuntajesTiradas[jugador][tirada],jugador);
                 }
                 /// SI HUBO UNA ESCALERA SE TERMINAN LAS TIRADAS LUEGO DE QUE JUEGEN TODOS
                 for(jugador=0;jugador<jugadores;jugador++){
