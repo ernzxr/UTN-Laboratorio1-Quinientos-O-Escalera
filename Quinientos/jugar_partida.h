@@ -159,6 +159,9 @@ void reiniciarPartida(int mPuntajeRondaJugador[][20], int mPuntajesTiradas[][3],
 
 /// JUGAR RONDA
 
+int desempateQuinientos(bool *vGanadorEscalera, int *vAcuPuntajeJugador, int *vTiradasTotales, int jugadores){
+}
+
 int desempateEscalera(bool *vGanadorEscalera, int *vAcuPuntajeJugador, int *vTiradasTotales, int jugadores){
     int i, jugadorGanador, maximoPuntos, minimoTiradas;
     bool primerMaximo=false, primerMinimo=false, empatePuntos=false, empateTiradas=false;
