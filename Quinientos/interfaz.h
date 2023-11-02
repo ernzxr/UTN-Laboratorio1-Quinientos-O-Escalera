@@ -74,9 +74,9 @@ void mostrarSalioEscalera(){
 /// ESTE MOSTRAR PUNTAJE VA A DESAPARECER EN EL MOMENTO QUE PONGAMOS TODO EN EL datosPartidaJugador()
 
 void mostrarPuntaje(int puntaje){
-    cout<<endl;
+
     cout<<"PUNTAJE: "<<puntaje<<endl;
-    cout<<endl;
+
 }
 
 void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int tirada, int ronda, int jugador, int maximoPuntajeTirada, int mPuntajesTiradas[][3]){
@@ -143,38 +143,47 @@ void solicitarNombreJugador(){
 
 void terminarPartidaPorQuinientos(char mJugadores[][8], bool *vGanadorQuinientos, int validarGanador, int *vTiradasTotales, int ronda, int puntaje, int jugadores, int mTiradaMinimaQuinientos[][2], bool desempate){
     if(desempate){
-        if(validarGanador<jugadores){
-            cout<<endl;
-            cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
-            cout<<"GANO POR LLEGAR A QUINIENTOS!"<<endl;
-            cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
-            mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
-            rlutil::anykey();
-            cout<<endl;
+            if(validarGanador<jugadores){
+                rlutil::locate(48,7);
+                cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
+                rlutil::locate(48,8);
+                cout<<"GANO POR LLEGAR A QUINIENTOS!"<<endl;
+                rlutil::locate(48,9);
+                cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
+                // mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
+                rlutil::locate(48,10);
+                cout<<"RONDAS JUGADAS: "<<ronda<<endl;
+                rlutil::anykey();
         }
         else{
-            int tiradasGanadores;
-            cout<<endl;
+            int tiradasGanadores,x=8;
+            rlutil::locate(48,7);
             cout<<"INSOLITO EMPATE POR QUINIENTOS ENTRE"<<endl;
             for(int jugador=0;jugador<jugadores;jugador++){
                 if(vGanadorQuinientos[jugador] && mTiradaMinimaQuinientos[jugador][1]==validarGanador){
                     tiradasGanadores=jugador;
+                    rlutil::locate(48,x);
                     cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
+                    x++;
                 }
+                }
+                rlutil::locate(48,x);
+                cout<<"RONDAS JUGADAS: "<<ronda<<endl;
+                rlutil::anykey();
+                //mostrarTiradasYRondas(vTiradasTotales[tiradasGanadores], ronda);
             }
-            rlutil::anykey();
-            mostrarTiradasYRondas(vTiradasTotales[tiradasGanadores], ronda);
-            cout<<endl;
-        }
-    }
+            }
     else{
-        cout<<endl;
+        rlutil::locate(48,7);
         cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
+        rlutil::locate(48,8);
         cout<<"GANO POR LLEGAR A QUINIENTOS!"<<endl;
+        rlutil::locate(48,9);
         cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
-        mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
+        //mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
+        rlutil::locate(48,10);
+        cout<<"RONDAS JUGADAS: "<<ronda<<endl;
         rlutil::anykey();
-        cout<<endl;
     }
 }
 
@@ -183,47 +192,62 @@ void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, in
     int jugador;
     if(desempate){
         if(validarGanador==-1){
-            cout<<endl;
+            int x=8;
+            rlutil::locate(48,7);
             cout<<"INSOLITO EMPATE POR ESCALERA ENTRE"<<endl;
             for(jugador=0;jugador<jugadores;jugador++){
                 if(vGanadorEscalera[jugador] && vAcuPuntajeJugador[jugador]==0){
+                    rlutil::locate(48,x);
                     cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
                 }
+                    x++;
             }
-            rlutil::anykey();
-            mostrarTiradasYRondas(1, ronda);
-            cout<<endl;
+                rlutil::locate(48,x);
+                cout<<"RONDAS JUGADAS: "<<ronda<<endl;
+                rlutil::anykey();
+                //mostrarTiradasYRondas(1, ronda);
+
         }
         else if(validarGanador<jugadores){
-            cout<<endl;
+            rlutil::locate(48,7);
             cout<<"EL GANADOR DEL DESEMPATE POR ESCALERA FUE"<<endl;
+            rlutil::locate(48,8);
             cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
+            rlutil::locate(48,9);
+            cout<<"RONDAS JUGADAS: "<<ronda<<endl;
             rlutil::anykey();
-            mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
-            cout<<endl;
+            //mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
+
         }
         else{
-            int tiradasGanadores;
-            cout<<endl;
+            int tiradasGanadores,x=8;
+            rlutil::locate(48,7);
             cout<<"INSOLITO EMPATE POR ESCALERA ENTRE"<<endl;
             for(jugador=0;jugador<jugadores;jugador++){
                 if(vGanadorEscalera[jugador] && vAcuPuntajeJugador[jugador]==validarGanador){
                     tiradasGanadores=jugador;
+                    rlutil::locate(48,x);
                     cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
                 }
+                    x++;
             }
-            rlutil::anykey();
-            mostrarTiradasYRondas(vTiradasTotales[tiradasGanadores], ronda);
-            cout<<endl;
+                rlutil::locate(48,x);
+                cout<<"RONDAS JUGADAS: "<<ronda<<endl;
+                rlutil::anykey();
+                //mostrarTiradasYRondas(vTiradasTotales[tiradasGanadores], ronda);
+
         }
     }
     else{
-        cout<<endl;
+        rlutil::locate(48,7);
         cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
+        rlutil::locate(48,8);
         cout<<"GANO POR SACAR ESCALERA!"<<endl;
+        rlutil::locate(48,9);
+        cout<<"RONDAS JUGADAS: "<<ronda<<endl;
         rlutil::anykey();
-        mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
-        cout<<endl;
+        //mostrarTiradasYRondas(vTiradasTotales[validarGanador], ronda);
+
     }
 }
 
