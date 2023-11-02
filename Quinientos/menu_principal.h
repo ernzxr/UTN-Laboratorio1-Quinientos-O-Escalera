@@ -2,7 +2,6 @@
 #define MENU_PRINCIPAL_H_INCLUDED
 
 int menuPrincipal(){
-
     int opcion = 1, maxOpciones = 5;
     bordeHorizontal(35, 9, 50);
     bordeHorizontal(35, 17, 50);
@@ -11,8 +10,6 @@ int menuPrincipal(){
     bordeVertical(36, 10, 7);
     bordeVertical(83, 10, 7);
     while(true) {
-
-
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {
                 rlutil::setColor(rlutil::LIGHTGREEN);
@@ -24,7 +21,6 @@ int menuPrincipal(){
                 rlutil::setColor(rlutil::WHITE);
 
             }
-
             rlutil::locate(50, 10 + i);
             switch (i) {
                 case 1:
@@ -47,12 +43,8 @@ int menuPrincipal(){
                     break;
             }
         }
-
        char tecla = rlutil::getkey();
-
-
         switch (tecla) {
-
             case 14:
                 rlutil::locate(48,10 + opcion);
                 std::cout <<" "<< std::endl;
@@ -70,7 +62,6 @@ int menuPrincipal(){
                 }
                 break;
             case 1:
-
                 if(opcion == 5) {
                     opcion = 0;
                 }
@@ -78,17 +69,12 @@ int menuPrincipal(){
             default:
                 break;
         }
-
     }
-
 }
 
 int menuMaxRondas(){
     int opcion = 1, maxOpciones = 4;
-
     while(true) {
-
-
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {
                 rlutil::setColor(rlutil::LIGHTGREEN);
@@ -98,7 +84,6 @@ int menuMaxRondas(){
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
-
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:
@@ -116,9 +101,7 @@ int menuMaxRondas(){
                 break;
             }
         }
-
         char tecla = rlutil::getkey();
-
         switch (tecla) {
             case 14:
                 rlutil::locate(48,11 + opcion);
@@ -148,11 +131,8 @@ int menuMaxRondas(){
 }
 
 int menuMultijugador(){
-int opcion = 1, maxOpciones = 4;
-
+    int opcion = 1, maxOpciones = 4;
     while(true) {
-
-
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {
                 rlutil::setColor(rlutil::LIGHTGREEN);
@@ -162,7 +142,6 @@ int opcion = 1, maxOpciones = 4;
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
-
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:
@@ -180,9 +159,7 @@ int opcion = 1, maxOpciones = 4;
                 break;
             }
         }
-
         char tecla = rlutil::getkey();
-
         switch (tecla) {
             case 14:
                 rlutil::locate(48,11 + opcion);
@@ -209,76 +186,73 @@ int opcion = 1, maxOpciones = 4;
                 break;
         }
     }
-
 }
 
+void mostrarRanking(int *vRankingPuntos, char mRanking[][8]){
+    rlutil::cls();
+    for(int i=0;i<10;i++){
+        cout<<"TOP "<<i+1<<"  "<<vRankingPuntos[i]<<"  "<<mRanking[i]<<endl;
+    }
+    rlutil::anykey();
+}
 
 int menuMusica(){
-int opcion = 1, maxOpciones = 3;
+    int opcion = 1, maxOpciones = 2;
+        while(true) {
+            for(int i=1; i<=maxOpciones; i++) {
+                if(i == opcion) {
+                    rlutil::setColor(rlutil::LIGHTGREEN);
+                    rlutil::locate(48,11 + i);
+                    std::cout << (char)62 << std::endl;
+                }
+                else {
+                    rlutil::setColor(rlutil::WHITE);
+                }
 
-    while(true) {
-
-        for(int i=1; i<=maxOpciones; i++) {
-            if(i == opcion) {
-                rlutil::setColor(rlutil::LIGHTGREEN);
-                rlutil::locate(48,11 + i);
-                std::cout << (char)62 << std::endl;
+                rlutil::locate(50, 11 + i);
+                switch (i) {
+                    case 1:
+                    cout<<"MUSICA ON "<<endl;
+                    break;
+                    case 2:
+                    cout<<"MUSICA OFF "<<endl;
+                    break;
+                    default:
+                    break;
+                }
             }
-            else {
-                rlutil::setColor(rlutil::WHITE);
-            }
-
-            rlutil::locate(50, 11 + i);
-            switch (i) {
+            char tecla = rlutil::getkey();
+            switch (tecla) {
+                case 14:
+                    rlutil::locate(48,11 + opcion);
+                    std::cout << " " << std::endl;
+                    opcion--;
+                    if (opcion < 1) {
+                        opcion = 1;
+                    }
+                    break;
+                case 15:
+                    rlutil::locate(48,11 + opcion);
+                    std::cout << " " << std::endl;
+                    opcion++;
+                    if (opcion > 2) {
+                        opcion = 2;
+                    }
+                    break;
                 case 1:
-                cout<<"MUSICA ON "<<endl;
-                break;
-                case 2:
-                cout<<"MUSICA OFF "<<endl;
-                break;
-                case 3:
-                cout<<"VOLVER AL INICIO "<<endl;
-                break;
+                    if(opcion == 2) {
+                        opcion = 2;
+                    }
+                    return opcion;
                 default:
-                break;
+                    break;
             }
         }
-
-        char tecla = rlutil::getkey();
-
-        switch (tecla) {
-            case 14:
-                rlutil::locate(48,11 + opcion);
-                std::cout << " " << std::endl;
-                opcion--;
-                if (opcion < 1) {
-                    opcion = 1;
-                }
-                break;
-            case 15:
-                rlutil::locate(48,11 + opcion);
-                std::cout << " " << std::endl;
-                opcion++;
-                if (opcion > 3) {
-                    opcion = 3;
-                }
-                break;
-            case 1:
-                if(opcion == 3) {
-                    opcion = 0;
-                }
-                return opcion;
-            default:
-                break;
-        }
-    }
 }
 
 int menuOpciones(){
     int opcion = 1, maxOpciones = 3;
-
     while(true) {
-
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {
                 rlutil::setColor(rlutil::LIGHTGREEN);
@@ -288,7 +262,6 @@ int menuOpciones(){
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
-
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:
@@ -304,10 +277,7 @@ int menuOpciones(){
                 break;
             }
         }
-
-
         char tecla = rlutil::getkey();
-
         switch (tecla) {
             case 14:
                 rlutil::locate(48,11 + opcion);
@@ -337,78 +307,67 @@ int menuOpciones(){
 }
 
 int menuSonido(){
-
-int opcion = 1, maxOpciones = 4;
-
-    while(true) {
-
-        for(int i=1; i<=maxOpciones; i++) {
-            if(i == opcion) {
-                rlutil::setColor(rlutil::LIGHTGREEN);
-                rlutil::locate(48,11 + i);
-                std::cout << (char)62 << std::endl;
-            }
-            else {
-                rlutil::setColor(rlutil::WHITE);
-            }
-
-            rlutil::locate(50, 11 + i);
-            switch (i) {
-                case 1:
-                cout<<"QUITAR SONIDO "<<endl;
-                break;
-                case 2:
-                cout<<"PONER SONIDO "<<endl;
-                break;
-                case 3:
-                cout<<"CAMBIAR MUSICA "<<endl;
-                break;
-                case 4:
-                cout<<"VOLVER "<<endl;
-                break;
-                default:
-                break;
-            }
-        }
-
-
-        char tecla = rlutil::getkey();
-
-        switch (tecla) {
-            case 14:
-                rlutil::locate(48,11 + opcion);
-                std::cout << " " << std::endl;
-                opcion--;
-                if (opcion < 1) {
-                    opcion = 1;
-                }
-                break;
-            case 15:
-                rlutil::locate(48,11 + opcion);
-                std::cout << " " << std::endl;
-                opcion++;
-                if (opcion > 4) {
-                    opcion = 4;
-                }
-                break;
-            case 1:
-                if(opcion == 4) {
-                    opcion = 0;
-                }
-                return opcion;
-            default:
-                break;
-        }
-    }
-
-
-}
-int menuColor(){
-
     int opcion = 1, maxOpciones = 4;
+        while(true) {
+            for(int i=1; i<=maxOpciones; i++) {
+                if(i == opcion) {
+                    rlutil::setColor(rlutil::LIGHTGREEN);
+                    rlutil::locate(48,11 + i);
+                    std::cout << (char)62 << std::endl;
+                }
+                else {
+                    rlutil::setColor(rlutil::WHITE);
+                }
+                rlutil::locate(50, 11 + i);
+                switch (i) {
+                    case 1:
+                    cout<<"QUITAR SONIDO "<<endl;
+                    break;
+                    case 2:
+                    cout<<"PONER SONIDO "<<endl;
+                    break;
+                    case 3:
+                    cout<<"CAMBIAR MUSICA "<<endl;
+                    break;
+                    case 4:
+                    cout<<"VOLVER "<<endl;
+                    break;
+                    default:
+                    break;
+                }
+            }
+            char tecla = rlutil::getkey();
+            switch (tecla) {
+                case 14:
+                    rlutil::locate(48,11 + opcion);
+                    std::cout << " " << std::endl;
+                    opcion--;
+                    if (opcion < 1) {
+                        opcion = 1;
+                    }
+                    break;
+                case 15:
+                    rlutil::locate(48,11 + opcion);
+                    std::cout << " " << std::endl;
+                    opcion++;
+                    if (opcion > 4) {
+                        opcion = 4;
+                    }
+                    break;
+                case 1:
+                    if(opcion == 4) {
+                        opcion = 0;
+                    }
+                    return opcion;
+                default:
+                    break;
+            }
+        }
+}
 
+int menuColor(){
+    int opcion = 1, maxOpciones = 4;
     while(true) {
-
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {
                 rlutil::setColor(rlutil::LIGHTGREEN);
@@ -418,7 +377,6 @@ int menuColor(){
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
-
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:
@@ -437,10 +395,7 @@ int menuColor(){
                 break;
             }
         }
-
-
         char tecla = rlutil::getkey();
-
         switch (tecla) {
             case 14:
                 rlutil::locate(48,11 + opcion);
@@ -467,9 +422,6 @@ int menuColor(){
                 break;
         }
     }
-
 }
-
-
 
 #endif // MENU_PRINCIPAL_H_INCLUDED
