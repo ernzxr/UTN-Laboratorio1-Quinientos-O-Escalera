@@ -97,6 +97,30 @@ void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int 
             cout<<"LANZAMIENTO N"<<(char)167<<tirada+1<<endl;
             //if(tirada>0)cout<<"PUNTAJE PROVISORIO "<<maximoPuntajeTirada<<endl;
             return;
+        /*case 2:
+
+            rlutil::locate(4,33);
+            cout<<"TIRADA DE: "<<mJugadores[jugador]<<endl;
+            rlutil::locate(45,45);
+            cout<<"RONDA NUMERO "<<(char)167<<ronda<<endl;
+            rlutil::locate(56,67);
+            cout<<"PUNTAJE TOTAL ACTUAL "<<mPuntajeJugadores[jugador][ronda-1]<<endl;
+            rlutil::locate(4,24);
+            cout<<"LANZAMIENTO N"<<(char)167<<tirada+1<<endl;
+            //if(tirada>0)cout<<"PUNTAJE PROVISORIO "<<maximoPuntajeTirada<<endl;
+            return;
+        case 3:
+            rlutil::locate(2,26);
+            cout<<"TIRADA DE: "<<mJugadores[jugador]<<endl;
+            rlutil::locate(31,26);
+            cout<<"RONDA NUMERO "<<(char)167<<ronda<<endl;
+            rlutil::locate(62,26);
+            cout<<"PUNTAJE TOTAL ACTUAL "<<mPuntajeJugadores[jugador][ronda-1]<<endl;
+            rlutil::locate(2,24);
+            cout<<"LANZAMIENTO N"<<(char)167<<tirada+1<<endl;
+            //if(tirada>0)cout<<"PUNTAJE PROVISORIO "<<maximoPuntajeTirada<<endl;
+            return;
+            */
     }
 }
 
