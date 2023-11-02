@@ -134,51 +134,68 @@ void solicitarNombreJugador(){
     cout<<"INGRESE SU NOMBRE [AAA-AAA]: ";
 }
 
-void terminarPartidaPorQuinientos(int tiradasTotales, int ronda, int puntaje){
-    cout<<endl;
-    cout<<"QUINIENTOS - GANASTE! "<<endl;
-    mostrarTiradasYRondas(tiradasTotales, ronda);
-    cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
-    cout<<endl;
-}
+void terminarPartidaPorQuinientos(char mJugadores[][8], int validarGanador, int tiradasTotales, int ronda, int puntaje, bool desempate){
+    if(desempate){
 
-void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, int *vAcuPuntajeJugador, int tiradasTotales, int ronda, int validarGanador, int jugadores){
-    rlutil::cls();
-    if(validarGanador==-1){
-        cout<<endl;
-        cout<<"INSOLITO EMPATE ENTRE"<<endl;
-        for(int i=0;i<jugadores;i++){
-            if(vGanadorEscalera[i] && vAcuPuntajeJugador[i]==0){
-                cout<<"JUGADOR "<<mJugadores[i]<<endl;
-            }
-        }
-        rlutil::anykey();
-        mostrarTiradasYRondas(tiradasTotales, ronda);
-        cout<<endl;
-    }
-    else if(validarGanador<jugadores){
-        cout<<endl;
-        cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
-        cout<<"ESCALERA - GANASTE! "<<endl;
-        rlutil::anykey();
-        mostrarTiradasYRondas(tiradasTotales, ronda);
-        cout<<endl;
     }
     else{
         cout<<endl;
-        cout<<"INSOLITO EMPATE ENTRE"<<endl;
-        for(int i=0;i<jugadores;i++){
-            if(vGanadorEscalera[i] && vAcuPuntajeJugador[i]==validarGanador){
-                cout<<"JUGADOR "<<mJugadores[i]<<endl;
+        cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
+        cout<<"GANO POR LLEGAR A QUINIENTOS!"<<endl;
+        cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
+        mostrarTiradasYRondas(tiradasTotales, ronda);
+        rlutil::anykey();
+        cout<<endl;
+    }
+}
+
+void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, int *vAcuPuntajeJugador, int tiradasTotales, int ronda, int validarGanador, int jugadores, bool desempate){
+    rlutil::cls();
+    if(desempate){
+        if(validarGanador==-1){
+            cout<<endl;
+            cout<<"INSOLITO EMPATE POR ESCALERA ENTRE"<<endl;
+            for(int i=0;i<jugadores;i++){
+                if(vGanadorEscalera[i] && vAcuPuntajeJugador[i]==0){
+                    cout<<"JUGADOR "<<mJugadores[i]<<endl;
+                }
             }
+            rlutil::anykey();
+            mostrarTiradasYRondas(tiradasTotales, ronda);
+            cout<<endl;
         }
+        else if(validarGanador<jugadores){
+            cout<<endl;
+            cout<<"EL GANADOR DEL DESEMPATE POR ESCALERA FUE"<<endl;
+            cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
+            rlutil::anykey();
+            mostrarTiradasYRondas(tiradasTotales, ronda);
+            cout<<endl;
+        }
+        else{
+            cout<<endl;
+            cout<<"INSOLITO EMPATE POR ESCALERA ENTRE"<<endl;
+            for(int i=0;i<jugadores;i++){
+                if(vGanadorEscalera[i] && vAcuPuntajeJugador[i]==validarGanador){
+                    cout<<"JUGADOR "<<mJugadores[i]<<endl;
+                }
+            }
+            rlutil::anykey();
+            mostrarTiradasYRondas(tiradasTotales, ronda);
+            cout<<endl;
+        }
+    }
+    else{
+        cout<<endl;
+        cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
+        cout<<"GANO POR SACAR ESCALERA!"<<endl;
         rlutil::anykey();
         mostrarTiradasYRondas(tiradasTotales, ronda);
         cout<<endl;
     }
 }
 
-void terminarPartidaPorRondasMaximas(int tiradasTotales, int ronda, int puntaje){
+void terminarPartidaPorRondasMaximas(char mJugadores[][8], int tiradasTotales, int ronda, int puntaje){
     cout<<endl;
     mostrarTiradasYRondas(tiradasTotales, ronda);
     cout<<"PUNTAJE TOTAL: "<<puntaje<<endl;
