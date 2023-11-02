@@ -326,10 +326,9 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                 mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
                 }
                 rlutil::anykey();
-                }
-                rlutil::anykey();
             }
             return;
     }
+}
 
 #endif // JUGAR_PARTIDA_H_INCLUDED
