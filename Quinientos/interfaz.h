@@ -213,7 +213,7 @@ void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, in
     }
 }
 
-void terminarPartidaPorRondasMaximas(char mJugadores[][8], int tiradasTotales, int ronda, int puntaje){
+void terminarPartidaPorRondasMaximas(char mJugadores[][8], int tiradasTotales, int ronda, int puntaje, int jugador){
     if(jugador==0){
     rlutil::locate(11,21);
     cout<<"QUINIENTOS - GANASTE! "<<endl;
