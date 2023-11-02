@@ -1,9 +1,48 @@
 #ifndef INTERFAZ_H_INCLUDED
 #define INTERFAZ_H_INCLUDED
 
+/// INTERFAZ MENU PRINCIPAL
+void bordeHorizontal(int x, int y, int limite) {
+    for(int i=0; i<limite; i++) {
+        rlutil::locate(x + i, y);
+        cout<<(char)177;
+    }
+    for(int i=0; i<limite; i++) {
+        rlutil::locate(x + i, y);
+        cout<<(char)178;
+        Sleep(5);
+    }
+}
+void bordeVertical(int x, int y, int limite) {
+    for(int i=0; i<limite; i++) {
+        rlutil::locate(x, y + i);
+        cout<<(char)177;
+    }
+    for(int i=0; i<limite; i++) {
+        rlutil::locate(x, y + i);
+        cout<<(char)178;
+        Sleep(20);
+    }
+}
+void lineaPunteadaHorizontal(int limite){
+    for(int i=0; i<limite; i++) {
+        cout<< "-";
+    }
+}
+
 /// INTERFAZ UN JUGADOR
 
 /// INTERFAZ DOS JUGADORES
+
+void resultadosRonda(char mJugadores[][8], int *vAcuPuntajeJugador, int ronda, int jugadores){
+    rlutil::cls();
+    cout<<"RONDA N: "<<ronda<<endl;
+    cout<<"PROXIMO TURNO: "<<mJugadores[0]<<endl;
+    cout<<"PUNTAJE "<<mJugadores[0]<<": "<<vAcuPuntajeJugador[0]<<" PUNTOS"<<endl;
+    cout<<"PUNTAJE "<<mJugadores[1]<<": "<<vAcuPuntajeJugador[1]<<" PUNTOS"<<endl;
+    rlutil::anykey();
+    rlutil::cls();
+}
 
 void mostrarDados(int *v, int jugador){
     switch(jugador){
@@ -26,15 +65,7 @@ void mostrarDados(int *v, int jugador){
     }
 }
 
-void mostrarSalioEscalera(){
-    cout<<endl;
-    cout<<"ESCALERA!"<<endl;
-    cout<<endl;
-}
-
-
 /// ESTE MOSTRAR PUNTAJE VA A DESAPARECER EN EL MOMENTO QUE PONGAMOS TODO EN EL datosPartidaJugador()
-
 
 void mostrarPuntaje(int puntaje){
     cout<<endl;
@@ -87,11 +118,40 @@ void terminarPartidaPorQuinientos(int tiradasTotales, int ronda, int puntaje){
     cout<<endl;
 }
 
-void terminarPartidaPorEscalera(int tiradasTotales, int ronda){
-    cout<<endl;
-    cout<<"ESCALERA - GANASTE! "<<endl;
-    mostrarTiradasYRondas(tiradasTotales, ronda);
-    cout<<endl;
+void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, int *vAcuPuntajeJugador, int tiradasTotales, int ronda, int validarGanador, int jugadores){
+    rlutil::cls();
+    if(validarGanador==-1){
+        cout<<endl;
+        cout<<"INSOLITO EMPATE ENTRE"<<endl;
+        for(int i=0;i<jugadores;i++){
+            if(vGanadorEscalera[i] && vAcuPuntajeJugador[i]==0){
+                cout<<"JUGADOR "<<mJugadores[i]<<endl;
+            }
+        }
+        rlutil::anykey();
+        mostrarTiradasYRondas(tiradasTotales, ronda);
+        cout<<endl;
+    }
+    else if(validarGanador<jugadores){
+        cout<<endl;
+        cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
+        cout<<"ESCALERA - GANASTE! "<<endl;
+        rlutil::anykey();
+        mostrarTiradasYRondas(tiradasTotales, ronda);
+        cout<<endl;
+    }
+    else{
+        cout<<endl;
+        cout<<"INSOLITO EMPATE ENTRE"<<endl;
+        for(int i=0;i<jugadores;i++){
+            if(vGanadorEscalera[i] && vAcuPuntajeJugador[i]==validarGanador){
+                cout<<"JUGADOR "<<mJugadores[i]<<endl;
+            }
+        }
+        rlutil::anykey();
+        mostrarTiradasYRondas(tiradasTotales, ronda);
+        cout<<endl;
+    }
 }
 
 void terminarPartidaPorRondasMaximas(int tiradasTotales, int ronda, int puntaje){

@@ -159,6 +159,60 @@ void reiniciarPartida(int mPuntajeRondaJugador[][20], int mPuntajesTiradas[][3],
 
 /// JUGAR RONDA
 
+int desempateEscalera(bool *vGanadorEscalera, int *vAcuPuntajeJugador, int *vTiradasTotales, int jugadores){
+    int i, jugadorGanador, maximoPuntos, minimoTiradas;
+    bool primerMaximo=false, primerMinimo=false, empatePuntos=false, empateTiradas=false;
+    for(i=0;i<jugadores;i++){
+        if(!primerMaximo){
+            if(vGanadorEscalera[i]){
+                primerMaximo=true;
+                maximoPuntos = vAcuPuntajeJugador[i];
+                jugadorGanador = i;
+            }
+        }
+        else if(vGanadorEscalera[i]){
+            if(vAcuPuntajeJugador[i]==maximoPuntos){
+                empatePuntos=true;
+            }
+            else if(vAcuPuntajeJugador[i]>maximoPuntos){
+                empatePuntos=false;
+                maximoPuntos = vAcuPuntajeJugador[i];
+                jugadorGanador = i;
+            }
+        }
+    }
+    if(empatePuntos){
+        for(i=0;i<jugadores;i++){
+            if(!primerMinimo){
+                if(vGanadorEscalera[i]){
+                    primerMinimo=true;
+                    minimoTiradas = vTiradasTotales[i];
+                    jugadorGanador = i;
+                }
+            }
+            else if(vGanadorEscalera[i]){
+                if(vTiradasTotales[i]==minimoTiradas){
+                    empateTiradas=true;
+                }
+                else if(vTiradasTotales[i]<minimoTiradas){
+                    empateTiradas=false;
+                    minimoTiradas = vTiradasTotales[i];
+                    jugadorGanador = i;
+                }
+            }
+        }
+    }
+    if(empateTiradas){
+        if(maximoPuntos==0){
+            return -1;
+        }
+        else{
+            return maximoPuntos;
+        }
+    }
+    return jugadorGanador;
+}
+
 void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador[][20], bool *vGanadorEscalera, int *vTiradasTotales, char mJugadores[][8], int ronda, int jugadores){
     int jugador;
     switch(jugadores){
@@ -199,6 +253,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                         vTiradasTotales[jugador]+=1;
                         if(escalera(vDados)){
                             vGanadorEscalera[jugador]=true;
+                            tirada=3;
                         }
                         else if(sextetoSeis(vDados)){
                             reiniciarPuntajeJugador(mPuntajeRondaJugador, jugador);
@@ -212,15 +267,17 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                         else{
                             mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
                         }
-                        if(!vGanadorEscalera[jugador]){
-                            mostrarPuntaje(mPuntajesTiradas[jugador][tirada],jugador);
-                        }
-                        else{
-                            mostrarSalioEscalera();
-                        }
                     }
-                rlutil::anykey();
+                    if(vGanadorEscalera[jugador]){
+                        cout<<endl;
+                        cout<<endl;
+                        cout<<endl;
+                        cout<<endl;
+                        cout<<"ESCALERA";
+                    }
+
                 }
+                rlutil::anykey();
             }
             return;
     }
