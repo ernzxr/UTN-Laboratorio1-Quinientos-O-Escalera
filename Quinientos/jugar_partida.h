@@ -223,6 +223,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
             jugador=0;
             for(int tirada=0;tirada<3;tirada++){
                 hacerTirada(vDados);
+                datosPartidaJugador(mJugadores, mPuntajeRondaJugador, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas);
                 mostrarDados(vDados, jugador);
                 vTiradasTotales[jugador]+=1;
                 if(escalera(vDados)){
@@ -242,7 +243,6 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                     mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
                 }
                 mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
-                datosPartidaJugador(mJugadores, mPuntajeRondaJugador, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas);
                 rlutil::anykey();
             }
             return;
@@ -256,6 +256,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                         vTiradasTotales[jugador]+=1;
                         if(escalera(vDados)){
                             vGanadorEscalera[jugador]=true;
+                            cout<<"ESCALERA";
                             tirada=3;
                         }
                         else if(sextetoSeis(vDados)){
@@ -271,14 +272,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                             mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
                         }
                     }
-                    if(vGanadorEscalera[jugador]){
-                        cout<<endl;
-                        cout<<endl;
-                        cout<<endl;
-                        cout<<endl;
-                        cout<<"ESCALERA";
-                    }
-
+                mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
                 }
                 rlutil::anykey();
             }
