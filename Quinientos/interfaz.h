@@ -74,9 +74,7 @@ void mostrarSalioEscalera(){
 /// ESTE MOSTRAR PUNTAJE VA A DESAPARECER EN EL MOMENTO QUE PONGAMOS TODO EN EL datosPartidaJugador()
 
 void mostrarPuntaje(int puntaje){
-
     cout<<"PUNTAJE: "<<puntaje<<endl;
-
 }
 
 void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int tirada, int ronda, int jugador, int maximoPuntajeTirada, int mPuntajesTiradas[][3]){

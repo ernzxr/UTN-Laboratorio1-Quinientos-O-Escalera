@@ -360,4 +360,50 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
     }
 }
 
+/// RANKING
+
+void defaultRanking(int *vRankingPuntos, char mRanking[][8]){
+    for(int i=0;i<10;i++){
+        vRankingPuntos[i]=0;
+        strcpy(mRanking[i], "AAA-AAA");
+    }
+    vRankingPuntos[2]=500;
+    strcpy(mRanking[2], "KLT-LAB");
+    vRankingPuntos[4]=500;
+    strcpy(mRanking[4], "BRN-LAB");
+    vRankingPuntos[6]=300;
+    strcpy(mRanking[6], "ERN-RIV");
+    vRankingPuntos[9]=310;
+    strcpy(mRanking[9], "LUC-JKV");
+    vRankingPuntos[3]=320;
+    strcpy(mRanking[3], "FAC-CHE");
+}
+
+void ordenarRanking(int *vRankingPuntos, char mRanking[][8]){
+    int puntosAux;
+    char nombreAux[8];
+    for(int i=0;i<10;i++){
+        for(int j=0;j<10;j++){
+            if(vRankingPuntos[i]>vRankingPuntos[j]){
+                puntosAux=vRankingPuntos[j];
+                vRankingPuntos[j]=vRankingPuntos[i];
+                vRankingPuntos[i]=puntosAux;
+                strcpy(nombreAux, mRanking[j]);
+                strcpy(mRanking[j], mRanking[i]);
+                strcpy(mRanking[i], nombreAux);
+            }
+        }
+    }
+}
+
+void actualizarRanking(int *vRankingPuntos, char mRanking[][8], char mJugadores[][8], int *vAcuPuntajeJugador, int jugador, int jugadores){
+    if(jugador!=-1 && jugador<jugadores){
+        if(vAcuPuntajeJugador[jugador]>vRankingPuntos[9]){
+            vRankingPuntos[9]=vAcuPuntajeJugador[jugador];
+            strcpy(mRanking[9], mJugadores[jugador]);
+            ordenarRanking(vRankingPuntos, mRanking);
+        }
+    }
+}
+
 #endif // JUGAR_PARTIDA_H_INCLUDED
