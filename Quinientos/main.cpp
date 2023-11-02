@@ -20,7 +20,7 @@ using namespace std;
 int main(){
     int const CANTIDAD_JUGADORES=4, TOP=10;
     int opcion, opcionRondas, maxRondas, ronda, tiradasTotales, jugador, jugadores, validarGanador, cQuinientos, cEscalera;
-    int mPuntajeRondaJugador[CANTIDAD_JUGADORES][20], vTiradasTotales[CANTIDAD_JUGADORES], vAcuPuntajeJugador[CANTIDAD_JUGADORES], vDados[6], mPuntajesTiradas[CANTIDAD_JUGADORES][3];
+    int mPuntajeRondaJugador[CANTIDAD_JUGADORES][20], vTiradasTotales[CANTIDAD_JUGADORES], vAcuPuntajeJugador[CANTIDAD_JUGADORES], vDados[6], mPuntajesTiradas[CANTIDAD_JUGADORES][3], mTiradaMinimaQuinientos[CANTIDAD_JUGADORES][2];
     char mJugadores[CANTIDAD_JUGADORES][8], mRanking[TOP][8];
     bool escalera, quinientos, mute=false, desempate, iniciarPartida, volverInicio;
     bool vGanadorEscalera[CANTIDAD_JUGADORES], vGanadorQuinientos[CANTIDAD_JUGADORES];
@@ -70,7 +70,7 @@ int main(){
                     while(ronda<maxRondas && !escalera && !quinientos){
                         /// SE JUEGA UNA RONDA DE TRES TIRADAS
                         ronda++;
-                        jugarRonda(vDados, mPuntajesTiradas, mPuntajeRondaJugador, vGanadorEscalera, vTiradasTotales, mJugadores, ronda, jugadores);
+                        jugarRonda(vDados, mPuntajesTiradas, mPuntajeRondaJugador, vGanadorEscalera, vTiradasTotales, mJugadores, ronda, jugadores, vAcuPuntajeJugador, mTiradaMinimaQuinientos, vGanadorQuinientos);
                         /// SE EVALUA SI UN JUGADOR OBTUVO ESCALERA
                         if(!vGanadorEscalera[jugador]){
                             /// SI NO HAY ESCALERA
@@ -81,7 +81,7 @@ int main(){
                             if(vAcuPuntajeJugador[jugador]>=500){
                                 /// FINALIZA JUEGO POR SUMAR QUINIENTOS PUNTOS
                                 quinientos=true;
-                                terminarPartidaPorQuinientos(mJugadores, jugador, vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador], false);
+                                terminarPartidaPorQuinientos(mJugadores, vGanadorQuinientos, jugador, vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador], jugadores, false);
                             }
                             else{
                                 /// SE MUESTRA EL PUNTAJE ACUMULADO
@@ -147,7 +147,7 @@ int main(){
                                 while(ronda<maxRondas && !escalera && !quinientos){
                                     /// SE JUEGA UNA RONDA DE TRES TIRADAS POR JUGADOR
                                     ronda++;
-                                    jugarRonda(vDados, mPuntajesTiradas, mPuntajeRondaJugador, vGanadorEscalera, vTiradasTotales, mJugadores, ronda, jugadores);
+                                    jugarRonda(vDados, mPuntajesTiradas, mPuntajeRondaJugador, vGanadorEscalera, vTiradasTotales, mJugadores, ronda, jugadores, vAcuPuntajeJugador, mTiradaMinimaQuinientos, vGanadorQuinientos);
                                     /// SE PROCESAN LOS DATOS OBTENIDOS DE LA RONDA PARA CADA JUGADOR
                                     for(jugador=0;jugador<jugadores;jugador++){
                                         /// SE EVALUA SI UN JUGADOR OBTUVO ESCALERA
@@ -157,12 +157,11 @@ int main(){
                                             cargarPuntajes(mPuntajeRondaJugador, mPuntajesTiradas, vAcuPuntajeJugador, ronda-1, jugador);
                                             mostrarPuntajeRonda(mPuntajeRondaJugador[jugador][ronda-1], jugador);
                                             /// SE EVALUA SI EL JUGADOR LOGRO QUINIENTOS
-                                            if(vAcuPuntajeJugador[jugador]>=500){
+                                            if(vGanadorQuinientos[jugador]){
                                                 /// SE ESPERA QUE TODOS LOS JUGADORES JUEGUEN
                                                 /// FINALIZA JUEGO POR SUMAR QUINIENTOS PUNTOS
                                                 cQuinientos++;
                                                 quinientos=true;
-                                                vGanadorQuinientos[jugador]=true;
                                             }
                                             else{
                                                 /// SE MUESTRA EL PUNTAJE ACUMULADO
@@ -201,15 +200,15 @@ int main(){
                                     else if(quinientos){
                                         if(cQuinientos>1){
                                             desempate=true;
-                                            validarGanador = desempateQuinientos(vGanadorEscalera, vAcuPuntajeJugador, vTiradasTotales, jugadores);
-                                            terminarPartidaPorQuinientos(mJugadores, validarGanador, vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador], desempate);
+                                            validarGanador = desempateQuinientos(vGanadorQuinientos, vAcuPuntajeJugador, mTiradaMinimaQuinientos, jugadores);
+                                            terminarPartidaPorQuinientos(mJugadores, vGanadorQuinientos, validarGanador, vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador], jugadores, desempate);
                                         }
                                         else{
                                             /// SE MUESTRA AL GANADOR POR QUINIENTOS
                                             desempate=false;
                                             for(validarGanador=0;validarGanador<jugadores;validarGanador++){
                                                 if(vGanadorQuinientos[validarGanador]){
-                                                    terminarPartidaPorQuinientos(mJugadores, validarGanador, vTiradasTotales[validarGanador], ronda, vAcuPuntajeJugador[validarGanador], desempate);
+                                                    terminarPartidaPorQuinientos(mJugadores, vGanadorQuinientos, validarGanador, vTiradasTotales[validarGanador], ronda, vAcuPuntajeJugador[validarGanador], jugadores, desempate);
                                                 }
                                             }
                                         }

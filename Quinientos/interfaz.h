@@ -134,9 +134,20 @@ void solicitarNombreJugador(){
     cout<<"INGRESE SU NOMBRE [AAA-AAA]: ";
 }
 
-void terminarPartidaPorQuinientos(char mJugadores[][8], int validarGanador, int tiradasTotales, int ronda, int puntaje, bool desempate){
+void terminarPartidaPorQuinientos(char mJugadores[][8], bool *vGanadorQuinientos, int validarGanador, int tiradasTotales, int ronda, int puntaje, int jugadores, bool desempate){
     if(desempate){
-
+        if(validarGanador==-1){
+            cout<<endl;
+            cout<<"INSOLITO EMPATE POR QUINIENTOS ENTRE"<<endl;
+            for(int i=0;i<jugadores;i++){
+                if(vGanadorQuinientos[i]){
+                    cout<<"JUGADOR "<<mJugadores[i]<<endl;
+                }
+            }
+            rlutil::anykey();
+            mostrarTiradasYRondas(tiradasTotales, ronda);
+            cout<<endl;
+        }
     }
     else{
         cout<<endl;
