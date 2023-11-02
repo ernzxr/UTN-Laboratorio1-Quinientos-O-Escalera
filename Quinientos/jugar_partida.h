@@ -272,9 +272,14 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                             mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
                         }
                     }
+<<<<<<< Updated upstream
                 mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
                 }
                 rlutil::anykey();
+=======
+                }
+                 rlutil::anykey();
+>>>>>>> Stashed changes
             }
             return;
     }
