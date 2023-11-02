@@ -42,6 +42,7 @@ int main(){
 
             case 1:
                 /// UN JUGADOR
+<<<<<<< Updated upstream
                 iniciarPartida=true;
                 opcionRondas = menuMaxRondas();
                 switch(opcionRondas){
@@ -97,6 +98,41 @@ int main(){
                     /// FINALIZAR PARTIDA POR MAXIMO DE RONDAS
                     if(ronda==maxRondas){
                         terminarPartidaPorRondasMaximas(mJugadores, vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador]);
+=======
+                /// INICIALIZACION DE JUEGO
+                // ELEGIR LA CANTIDAD DE RONDAS A JUGAR maxRondas ######-------#########
+                maxRondas=10, ronda=0, tiradasTotales=0, jugador=0;
+                escalera=false, quinientos=false;
+                reiniciarPartida(mPuntajeRondaJugador, mPuntajesTiradas, vAcuPuntajeJugador, vTiradasTotales, vGanadorEscalera, vGanadorQuinientos, CANTIDAD_JUGADORES);
+
+                cargarNombre(mJugadores, 7, jugador);
+
+                if(!mute)playMusicaPartida(); /// MUSICA PARTIDA
+
+                /// SE JUEGAN LA CANTIDAD MAXIMA DE RONDAS INDICADAS
+                while(ronda<maxRondas && !escalera && !quinientos){
+                    ronda++;
+                    jugarRonda(vDados, mPuntajesTiradas, mPuntajeRondaJugador, vGanadorEscalera, vTiradasTotales, mJugadores, ronda, jugadores);
+                    if(!vGanadorEscalera[jugador]){
+                        /// GUARDAR MAXIMO PUNTAJE DE LAS TRES TIRADAS EN LA RONDA CORRESPONDIENTE
+                        cargarPuntajes(mPuntajeRondaJugador, mPuntajesTiradas, vAcuPuntajeJugador, ronda-1, jugador);
+                        mostrarPuntajeRonda(mPuntajeRondaJugador[jugador][ronda-1], jugador);
+                        if(vAcuPuntajeJugador[jugador]>=500){
+                            /// FINALIZA JUEGO POR SUMAR QUINIENTOS PUNTOS
+                            quinientos=true;
+                            terminarPartidaPorQuinientos(tiradasTotales, ronda, vAcuPuntajeJugador[jugador],jugador);
+                            cout<<mJugadores[jugador]<<endl; //ACOMODAR SALIDA DE NOMBRE ######-------#########
+                        }
+                        else{
+                            mostrarPuntajeAcumulado(tiradasTotales, ronda, vAcuPuntajeJugador[jugador],jugadores);
+                        }
+                    }
+                    else{
+                        /// FINALIZA JUEGO POR SUMAR OBTENER ESCALERA
+                        escalera=true;
+                        terminarPartidaPorEscalera(tiradasTotales, ronda, jugadores);
+                        cout<<mJugadores[jugador]<<endl; //ACOMODAR SALIDA DE NOMBRE ######-------#########
+>>>>>>> Stashed changes
                     }
                     /// SE MUESTRA EL RESULTADO DE LA RONDA
                     else {
@@ -107,7 +143,17 @@ int main(){
                     iniciarPartida=false;
                     opcion=0;
                 }
+<<<<<<< Updated upstream
                 opcion=0;
+=======
+                if(ronda==maxRondas){
+                    /// SE MUESTRA EL RESULTADO FINAL SI SE LLEGO AL MAXIMO DE RONDAS
+                    terminarPartidaPorRondasMaximas(tiradasTotales, ronda, vAcuPuntajeJugador[jugador-1], jugadores);
+                    cout<<mJugadores[jugador]<<endl; //ACOMODAR SALIDA DE NOMBRE ######-------#########
+                }
+                rlutil::anykey();
+                if(!mute)musicaMenuPrincipal();
+>>>>>>> Stashed changes
                 break;
             case 2:
                 /// MENU MULTIJUGADOR
@@ -117,6 +163,7 @@ int main(){
                     switch(opcion){
                         case 1:
                             /// DOS JUGADORES
+<<<<<<< Updated upstream
                             /// SE SELECCIONAN LA CANTIDAD DE RONDAS A JUGAR
                             iniciarPartida=true;
                             volverInicio=false;
@@ -195,10 +242,47 @@ int main(){
                                                 }
                                             }
                                         }
+=======
+                            /// INICIALIZACION DE JUEGO
+                            // ELEGIR LA CANTIDAD DE RONDAS A JUGAR maxRondas ######-------#########
+                            maxRondas=10, ronda=0, tiradasTotales=0, jugadores=2, cQuinientos=0;
+                            escalera=false, quinientos=false;
+                            reiniciarPartida(mPuntajeRondaJugador, mPuntajesTiradas, vAcuPuntajeJugador, vTiradasTotales, vGanadorEscalera, vGanadorQuinientos, CANTIDAD_JUGADORES);
+
+                            cargarNombre(mJugadores, 7, jugadores-1); /// SE SOLICITAN DOS NOMBRES
+
+                            if(!mute)playMusicaPartida(); /// MUSICA PARTIDA
+
+                            /// SE JUEGAN LA CANTIDAD MAXIMA DE RONDAS INDICADAS
+                            while(ronda<maxRondas && !escalera && !quinientos){
+                                ronda++;
+                                jugarRonda(vDados, mPuntajesTiradas, mPuntajeRondaJugador, vGanadorEscalera, vTiradasTotales, mJugadores, ronda, jugadores);
+                                for(int jugador=0;jugador<jugadores;jugador++){
+                                    if(!vGanadorEscalera[jugador]){
+                                        /// GUARDA Y SE MUESTRA MAXIMO PUNTAJE DE LAS TRES TIRADAS EN LA RONDA
+                                        cargarPuntajes(mPuntajeRondaJugador, mPuntajesTiradas, vAcuPuntajeJugador, ronda-1, jugadores);
+                                        mostrarPuntajeRonda(mPuntajeRondaJugador[jugador][ronda-1], jugador);
+                                        if(vAcuPuntajeJugador[jugador]>=500){
+                                            /// FINALIZA JUEGO POR SUMAR QUINIENTOS PUNTOS
+                                            cQuinientos++;
+                                            quinientos=true;
+                                            vGanadorQuinientos[jugador]=true;
+                                        }
+                                        else{
+                                            mostrarPuntajeAcumulado(vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador],jugadores);
+                                        }
+                                    }
+                                    else{
+                                        /// FINALIZA JUEGO POR SUMAR OBTENER ESCALERA
+                                        escalera=true;
+                                        terminarPartidaPorEscalera(vTiradasTotales[jugador], ronda,jugadores);
+                                        cout<<mJugadores[jugador]<<endl; //ACOMODAR SALIDA DE NOMBRE ######-------#########
+>>>>>>> Stashed changes
                                     }
                                     /// FINALIZAR PARTIDA POR QUINIENTOS Y VALIDACION PARA DESEMPATE
                                     else if(quinientos){
                                         if(cQuinientos>1){
+<<<<<<< Updated upstream
                                             desempate=true;
                                             validarGanador = desempateQuinientos(vGanadorQuinientos, vAcuPuntajeJugador, mTiradaMinimaQuinientos, jugadores);
                                             terminarPartidaPorQuinientos(mJugadores, vGanadorQuinientos, validarGanador, vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador], jugadores, desempate);
@@ -220,6 +304,20 @@ int main(){
                                     /// SE MUESTRA EL RESULTADO DE LA RONDA
                                     else {
                                         resultadosRonda(mJugadores, vAcuPuntajeJugador, ronda, jugadores);
+=======
+                                            terminarPartidaPorQuinientos(vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador],jugadores);
+                                            cout<<mJugadores[jugador]<<endl; //ACOMODAR SALIDA DE NOMBRE ######-------#########
+                                        }
+                                        else{
+                                            terminarPartidaPorQuinientos(vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador],jugadores);
+                                            cout<<mJugadores[jugador]<<endl; //ACOMODAR SALIDA DE NOMBRE ######-------#########
+                                        }
+                                    }
+                                    if(ronda==maxRondas){
+                                        /// SE MUESTRA EL RESULTADO FINAL SI SE LLEGO AL MAXIMO DE RONDAS
+                                        terminarPartidaPorRondasMaximas(vTiradasTotales[jugador], ronda, vAcuPuntajeJugador[jugador],jugadores);
+                                        cout<<mJugadores[jugador]<<endl; //ACOMODAR SALIDA DE NOMBRE ######-------#########
+>>>>>>> Stashed changes
                                     }
                                 }
                                 /// TERMINA LA PARTIDA Y SE VUELVE AL MENU PRINCIPAL

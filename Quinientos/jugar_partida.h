@@ -323,9 +323,14 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                             mTiradaMinimaQuinientos[jugador][1]=vAcuPuntajeJugador[jugador]+mPuntajesTiradas[jugador][tirada];
                         }
                     }
+<<<<<<< Updated upstream
                 mostrarPuntaje(mPuntajesTiradas[jugador][tirada]);
                 }
                 rlutil::anykey();
+=======
+                }
+                 rlutil::anykey();
+>>>>>>> Stashed changes
             }
             return;
     }
