@@ -44,20 +44,36 @@ void lineaPunteadaHorizontal(int limite){
 
 void resultadosRonda(char mJugadores[][8], int *vAcuPuntajeJugador, int ronda, int jugadores){
     rlutil::cls();
-    bordeHorizontal(41, 11, 44, 196);
-    bordeHorizontal(41, 16, 44, 196);
-    bordeVertical(41, 12, 4, 24);
-    bordeVertical(84, 12, 4, 25);
-    rlutil::locate(52,12);
-    cout<<"RONDA N: "<<ronda<<endl;
-    rlutil::locate(52,13);
-    cout<<"PROXIMO TURNO: "<<mJugadores[0]<<endl;
-     rlutil::locate(52,14);
-    cout<<"PUNTAJE "<<mJugadores[0]<<": "<<vAcuPuntajeJugador[0]<<" PUNTOS"<<endl;
-     rlutil::locate(52,15);
-    cout<<"PUNTAJE "<<mJugadores[1]<<": "<<vAcuPuntajeJugador[1]<<" PUNTOS"<<endl;
-    rlutil::anykey();
-    rlutil::cls();
+    if(jugadores>1){
+        bordeHorizontal(41, 11, 44, 196);
+        bordeHorizontal(41, 16, 44, 196);
+        bordeVertical(41, 12, 4, 24);
+        bordeVertical(84, 12, 4, 25);
+        rlutil::locate(52,12);
+        cout<<"RONDA N: "<<ronda<<endl;
+        rlutil::locate(52,13);
+        cout<<"PROXIMO TURNO: "<<mJugadores[0]<<endl;
+         rlutil::locate(52,14);
+        cout<<"PUNTAJE "<<mJugadores[0]<<": "<<vAcuPuntajeJugador[0]<<" PUNTOS"<<endl;
+         rlutil::locate(52,15);
+        cout<<"PUNTAJE "<<mJugadores[1]<<": "<<vAcuPuntajeJugador[1]<<" PUNTOS"<<endl;
+        rlutil::anykey();
+        rlutil::cls();
+    }
+    else{
+        bordeHorizontal(41, 11, 44, 196);
+        bordeHorizontal(41, 16, 44, 196);
+        bordeVertical(41, 12, 4, 24);
+        bordeVertical(84, 12, 4, 25);
+        rlutil::locate(52,12);
+        cout<<"RONDA N: "<<ronda<<endl;
+        rlutil::locate(52,13);
+        cout<<"PROXIMO TURNO: "<<mJugadores[0]<<endl;
+         rlutil::locate(52,14);
+        cout<<"PUNTAJE "<<mJugadores[0]<<": "<<vAcuPuntajeJugador[0]<<" PUNTOS"<<endl;
+        rlutil::anykey();
+        rlutil::cls();
+    }
 }
 
 void mostrarDados(int *v, int jugador){
