@@ -47,11 +47,17 @@ void lineaPunteadaHorizontal(int limite){
 
 void resultadosRonda(char mJugadores[][8], int *vAcuPuntajeJugador, int ronda, int jugadores){
     rlutil::cls();
+    bordeHorizontal(41, 11, 44, 196);
+    bordeHorizontal(41, 16, 44, 196);
+    bordeVertical(41, 12, 4, 24);
+    bordeVertical(84, 12, 4, 25);
+    rlutil::locate(52,12);
     cout<<"RONDA N: "<<ronda<<endl;
+    rlutil::locate(52,13);
     cout<<"PROXIMO TURNO: "<<mJugadores[0]<<endl;
-     rlutil::locate(9,16);
+     rlutil::locate(52,14);
     cout<<"PUNTAJE "<<mJugadores[0]<<": "<<vAcuPuntajeJugador[0]<<" PUNTOS"<<endl;
-     rlutil::locate(9,16);
+     rlutil::locate(52,15);
     cout<<"PUNTAJE "<<mJugadores[1]<<": "<<vAcuPuntajeJugador[1]<<" PUNTOS"<<endl;
     rlutil::anykey();
     rlutil::cls();
@@ -157,41 +163,53 @@ void terminarPartidaPorQuinientos(char mJugadores[][8], bool *vGanadorQuinientos
         rlutil::cls();
         if(desempate){
             if(validarGanador<jugadores){
-                rlutil::locate(48,7);
+                bordeHorizontal(41, 11, 44, 196);
+                bordeHorizontal(41, 16, 44, 196);
+                bordeVertical(41, 12, 4, 24);
+                bordeVertical(84, 12, 4, 25);
+                rlutil::locate(45,12);
                 cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
-                rlutil::locate(48,8);
+                rlutil::locate(45,13);
                 cout<<"GANO POR LLEGAR A QUINIENTOS!"<<endl;
-                rlutil::locate(48,9);
+                rlutil::locate(45,14);
                 cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
-                rlutil::locate(48,10);
+                rlutil::locate(45,15);
                 cout<<"RONDAS JUGADAS: "<<ronda<<endl;
                 rlutil::anykey();
         }
         else{
-            int tiradasGanadores,x=8;
-            rlutil::locate(48,7);
+            bordeHorizontal(41, 11, 44, 196);
+            bordeHorizontal(41, 16, 44, 196);
+            bordeVertical(41, 12, 4, 24);
+            bordeVertical(84, 12, 4, 25);
+            int tiradasGanadores,x=13;
+            rlutil::locate(45,12);
             cout<<"INSOLITO EMPATE POR QUINIENTOS ENTRE"<<endl;
             for(int jugador=0;jugador<jugadores;jugador++){
                 if(vGanadorQuinientos[jugador] && mTiradaMinimaQuinientos[jugador][1]==validarGanador){
                     tiradasGanadores=jugador;
-                    rlutil::locate(48,x);
+                    rlutil::locate(45,x);
                     cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
                     x++;
                 }
                 }
-                rlutil::locate(48,x);
+                rlutil::locate(45,x);
                 cout<<"RONDAS JUGADAS: "<<ronda<<endl;
                 rlutil::anykey();
             }
             }
     else{
-        rlutil::locate(48,7);
+    bordeHorizontal(41, 11, 44, 196);
+    bordeHorizontal(41, 16, 44, 196);
+    bordeVertical(41, 12, 4, 24);
+    bordeVertical(84, 12, 4, 25);
+        rlutil::locate(45,12);
         cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
-        rlutil::locate(48,8);
+        rlutil::locate(45,13);
         cout<<"GANO POR LLEGAR A QUINIENTOS!"<<endl;
-        rlutil::locate(48,9);
+        rlutil::locate(45,14);
         cout<<"PUNTAJE OBTENIDO: "<<puntaje<<endl;
-        rlutil::locate(48,10);
+        rlutil::locate(45,15);
         cout<<"RONDAS JUGADAS: "<<ronda<<endl;
         rlutil::anykey();
     }
@@ -202,54 +220,70 @@ void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, in
     int jugador;
     if(desempate){
         if(validarGanador==-1){
-            int x=8;
+            int x=13;
+            bordeHorizontal(41, 11, 44, 196);
+            bordeHorizontal(41, 16, 44, 196);
+            bordeVertical(41, 12, 4, 24);
+            bordeVertical(84, 12, 4, 25);
             rlutil::locate(48,7);
             cout<<"INSOLITO EMPATE POR ESCALERA ENTRE"<<endl;
             for(jugador=0;jugador<jugadores;jugador++){
                 if(vGanadorEscalera[jugador] && vAcuPuntajeJugador[jugador]==0){
-                    rlutil::locate(48,x);
+                    rlutil::locate(45,x);
                     cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
                 }
                     x++;
             }
-                rlutil::locate(48,x);
+                rlutil::locate(45,x);
                 cout<<"RONDAS JUGADAS: "<<ronda<<endl;
                 rlutil::anykey();
 
         }
         else if(validarGanador<jugadores){
-            rlutil::locate(48,7);
+            bordeHorizontal(41, 11, 44, 196);
+            bordeHorizontal(41, 16, 44, 196);
+            bordeVertical(41, 12, 4, 24);
+            bordeVertical(84, 12, 4, 25);
+            rlutil::locate(45,12);
             cout<<"EL GANADOR DEL DESEMPATE POR ESCALERA FUE"<<endl;
-            rlutil::locate(48,8);
+            rlutil::locate(45,13);
             cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
-            rlutil::locate(48,9);
+            rlutil::locate(45,14);
             cout<<"RONDAS JUGADAS: "<<ronda<<endl;
             rlutil::anykey();
 
         }
         else{
-            int tiradasGanadores,x=8;
-            rlutil::locate(48,7);
+            bordeHorizontal(41, 11, 44, 196);
+            bordeHorizontal(41, 16, 44, 196);
+            bordeVertical(41, 12, 4, 24);
+            bordeVertical(84, 12, 4, 25);
+            int tiradasGanadores,x=13;
+            rlutil::locate(45,12);
             cout<<"INSOLITO EMPATE POR ESCALERA ENTRE"<<endl;
             for(jugador=0;jugador<jugadores;jugador++){
                 if(vGanadorEscalera[jugador] && vAcuPuntajeJugador[jugador]==validarGanador){
                     tiradasGanadores=jugador;
-                    rlutil::locate(48,x);
+                    rlutil::locate(45,x);
                     cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
                 }
                     x++;
             }
-                rlutil::locate(48,x);
+                rlutil::locate(45,x);
                 cout<<"RONDAS JUGADAS: "<<ronda<<endl;
                 rlutil::anykey();
         }
     }
     else{
-        rlutil::locate(48,7);
+        bordeHorizontal(41, 11, 44, 196);
+        bordeHorizontal(41, 16, 44, 196);
+        bordeVertical(41, 12, 4, 24);
+        bordeVertical(84, 12, 4, 25);
+        rlutil::locate(45,12);
         cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
-        rlutil::locate(48,8);
+        rlutil::locate(45,13);
         cout<<"GANO POR SACAR ESCALERA!"<<endl;
-        rlutil::locate(48,9);
+        rlutil::locate(45,14);
         cout<<"RONDAS JUGADAS: "<<ronda<<endl;
         rlutil::anykey();
     }
@@ -258,27 +292,35 @@ void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, in
 void terminarPartidaPorRondasMaximas(char mJugadores[][8], int validarGanador, int ronda, int *vAcuPuntajeJugador, int jugadores){
     rlutil::cls();
     if(validarGanador<jugadores){
-        rlutil::locate(48,7);
+        bordeHorizontal(41, 11, 44, 196);
+        bordeHorizontal(41, 16, 44, 196);
+        bordeVertical(41, 12, 4, 24);
+        bordeVertical(84, 12, 4, 25);
+        rlutil::locate(45,12);
         cout<<"EL GANADOR LA PARTIDA FUE "<<mJugadores[validarGanador]<<endl;
-        rlutil::locate(48,8);
+        rlutil::locate(45,13);
         cout<<"CON UN TOTAL DE "<<vAcuPuntajeJugador[validarGanador]<<" PUNTOS"<<endl;
-        rlutil::locate(48,9);
+        rlutil::locate(45,14);
         cout<<"RONDAS JUGADAS: "<<ronda<<endl;
         rlutil::anykey();
     }
     else{
-        int puntosGanadores,x=8;
+        bordeHorizontal(41, 11, 44, 196);
+        bordeHorizontal(41, 16, 44, 196);
+        bordeVertical(41, 12, 4, 24);
+        bordeVertical(84, 12, 4, 25);
+        int puntosGanadores,x=13;
         puntosGanadores = validarGanador;
-        rlutil::locate(48,7);
+        rlutil::locate(45,12);
         cout<<"INSOLITO EMPATE CON "<<puntosGanadores<<" PUNTOS"<<endl;
         for(int jugador=0;jugador<jugadores;jugador++){
             if(vAcuPuntajeJugador[jugador]==puntosGanadores){
-                rlutil::locate(48,x);
+                rlutil::locate(45,x);
                 cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
             }
             x++;
         }
-        rlutil::locate(48,x);
+        rlutil::locate(45,x);
         cout<<"RONDAS JUGADAS: "<<ronda<<endl;
         rlutil::anykey();
             }
