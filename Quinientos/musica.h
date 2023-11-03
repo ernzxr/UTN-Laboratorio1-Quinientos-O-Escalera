@@ -3,7 +3,7 @@
 
 void musicaMenuPrincipal() {
     //PlaySound(0, 0, 0);
-    PlaySound(TEXT("prueba.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+    PlaySound(TEXT("MusicaMenuPrincipal.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 }
 
 void playMusicaPartida() {
