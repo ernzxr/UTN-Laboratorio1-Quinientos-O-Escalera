@@ -23,8 +23,9 @@ int main(){
     int opcion, opcionRondas, vRankingPuntos[TOP],maxRondas, ronda, tiradasTotales, jugador, jugadores, validarGanador, cQuinientos, cEscalera;
     int mPuntajeRondaJugador[CANTIDAD_JUGADORES][20], vTiradasTotales[CANTIDAD_JUGADORES], vAcuPuntajeJugador[CANTIDAD_JUGADORES], vDados[6], mPuntajesTiradas[CANTIDAD_JUGADORES][3], mTiradaMinimaQuinientos[CANTIDAD_JUGADORES][2];
     char mJugadores[CANTIDAD_JUGADORES][8], mRanking[TOP][8];
-    bool escalera, quinientos, mute, desempate, iniciarPartida, volverInicio;
+    bool escalera, quinientos, mute, desempate, iniciarPartida, volverInicio, animacionInicial=false;
     bool vGanadorEscalera[CANTIDAD_JUGADORES], vGanadorQuinientos[CANTIDAD_JUGADORES];
+
 
     defaultRanking(vRankingPuntos, mRanking);
     ordenarRanking(vRankingPuntos, mRanking);
@@ -46,7 +47,8 @@ int main(){
     while(true){
         if(!mute)musicaMenuPrincipal(); /// MUSICA
         rlutil::cls();
-        opcion = menuPrincipal(); /// MENU PRINCIPAL
+        opcion = menuPrincipal(animacionInicial); /// MENU PRINCIPAL
+        animacionInicial = true;
         switch(opcion){
             case 1:
                 /// UN JUGADOR
