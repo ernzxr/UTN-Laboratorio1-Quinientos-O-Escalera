@@ -5,13 +5,14 @@ void cargarNombre(char pal[][8], int tam, int jug){
     rlutil::cls();
     int i;
     for(int j=0; j<=jug; j++){
-        solicitarNombreJugador(jug);
+        solicitarNombreJugador(j+1);
         fflush(stdin);
         for(i=0; i<tam; i++)
         {
             pal[j][i]=cin.get();
             if(pal[j][i]=='\n') break;
         }
+        rlutil::cls();
         pal[j][i]='\0';
         fflush(stdin);
     }

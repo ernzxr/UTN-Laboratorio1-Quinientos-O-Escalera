@@ -145,10 +145,12 @@ void solicitarNombreJugador(int jug){
     bordeHorizontal(41, 16, 44, 196);
     bordeVertical(41, 12, 4, 24);
     bordeVertical(84, 12, 4, 25);
-    rlutil::locate(45, 12);
+    rlutil::locate(45,12);
     cout<< "JUGADOR "<<jug<<endl;
-    rlutil::locate(45, 12 + jug);
+    rlutil::locate(45, 14);
     cout<<"INGRESE SU NOMBRE [AAA-AAA]: ";
+    rlutil::anykey();
+
 }
 
 void terminarPartidaPorQuinientos(char mJugadores[][8], bool *vGanadorQuinientos, int validarGanador, int *vTiradasTotales, int ronda, int puntaje, int jugadores, int mTiradaMinimaQuinientos[][2], bool desempate){
