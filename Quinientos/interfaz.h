@@ -199,10 +199,10 @@ void terminarPartidaPorQuinientos(char mJugadores[][8], bool *vGanadorQuinientos
             }
             }
     else{
-    bordeHorizontal(41, 11, 44, 196);
-    bordeHorizontal(41, 16, 44, 196);
-    bordeVertical(41, 12, 4, 24);
-    bordeVertical(84, 12, 4, 25);
+        bordeHorizontal(41, 11, 44, 196);
+        bordeHorizontal(41, 16, 44, 196);
+        bordeVertical(41, 12, 4, 24);
+        bordeVertical(84, 12, 4, 25);
         rlutil::locate(45,12);
         cout<<"JUGADOR "<<mJugadores[validarGanador]<<endl;
         rlutil::locate(45,13);
@@ -359,6 +359,30 @@ void mostrarPuntajeAcumulado(int tiradasTotales, int ronda, int puntaje, int jug
     rlutil::locate(86,23);
     cout<<"PUNTAJE ACTUAL: "<<puntaje<<endl;
     }
+}
+void tresJugadores(){
+    rlutil::cls();
+    bordeHorizontal(41, 11, 44, 196);
+    bordeHorizontal(41, 16, 44, 196);
+    bordeVertical(41, 12, 4, 24);
+    bordeVertical(84, 12, 4, 25);
+    rlutil::locate(52,13);
+    cout<<"MODO TRES JUGADORES"<<endl;
+    rlutil::locate(55,14);
+    cout<<"EN DESARROLLO"<<endl;
+    rlutil::anykey();
+}
+void cuatroJugadores(){
+    rlutil::cls();
+    bordeHorizontal(41, 11, 44, 196);
+    bordeHorizontal(41, 16, 44, 196);
+    bordeVertical(41, 12, 4, 24);
+    bordeVertical(84, 12, 4, 25);
+    rlutil::locate(51,13);
+    cout<<"MODO CUATRO JUGADORES"<<endl;
+    rlutil::locate(55,14);
+    cout<<"EN DESARROLLO"<<endl;
+    rlutil::anykey();
 }
 
 #endif // INTERFAZ_H_INCLUDED

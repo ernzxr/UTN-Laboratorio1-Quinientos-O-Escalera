@@ -262,9 +262,11 @@ int main(){
                             break;
                         case 2:
                             /// TRES JUGADORES
+                            tresJugadores();
                             break;
                         case 3:
                             /// CUATRO JUGADORES
+                            cuatroJugadores();
                             break;
                         case 0:
                             /// VOLVER
