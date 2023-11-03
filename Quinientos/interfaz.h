@@ -283,7 +283,7 @@ void terminarPartidaPorRondasMaximas(char mJugadores[][8], int validarGanador, i
         bordeVertical(41, 12, 4, 24);
         bordeVertical(84, 12, 4, 25);
         rlutil::locate(45,12);
-        cout<<"EL GANADOR LA PARTIDA FUE "<<mJugadores[validarGanador]<<endl;
+        cout<<"EL GANADOR DE LA PARTIDA FUE "<<mJugadores[validarGanador]<<endl;
         rlutil::locate(45,13);
         cout<<"CON UN TOTAL DE "<<vAcuPuntajeJugador[validarGanador]<<" PUNTOS"<<endl;
         rlutil::locate(45,14);
