@@ -1,3 +1,5 @@
+#pragma comment(lib, "winmm.lib")
+
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
@@ -10,7 +12,6 @@ using namespace std;
 
 #include "rlutil.h"
 #include "color.h"
-#pragma comment(lib, "winmm.lib") /// VER .h
 #include "musica.h"
 #include "dados.h"
 #include "interfaz.h"
