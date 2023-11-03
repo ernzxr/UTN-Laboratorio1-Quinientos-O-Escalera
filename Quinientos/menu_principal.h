@@ -2,27 +2,27 @@
 #define MENU_PRINCIPAL_H_INCLUDED
 
 void logo() {
-    bordeHorizontal(48,3,7,219);
+    bordeHorizontal(47,3,7,219);
+    bordeVertical(47,4,1,219);
     bordeVertical(48,4,1,219);
-    bordeVertical(49,4,1,219);
-    bordeHorizontal(48,5,7,219);
-    bordeVertical(54,6,1,219);
+    bordeHorizontal(47,5,7,219);
     bordeVertical(53,6,1,219);
-    bordeHorizontal(48,7,7,219);
+    bordeVertical(52,6,1,219);
+    bordeHorizontal(47,7,7,219);
 
-    bordeHorizontal(58,3,7,219);
+    bordeHorizontal(57,3,7,219);
+    bordeVertical(57,3,4,219);
     bordeVertical(58,3,4,219);
-    bordeVertical(59,3,4,219);
-    bordeHorizontal(58,7,7,219);
+    bordeHorizontal(57,7,7,219);
+    bordeVertical(62,3,4,219);
     bordeVertical(63,3,4,219);
-    bordeVertical(64,3,4,219);
 
-    bordeHorizontal(68,3,7,219);
+    bordeHorizontal(67,3,7,219);
+    bordeVertical(67,3,4,219);
     bordeVertical(68,3,4,219);
-    bordeVertical(69,3,4,219);
-    bordeHorizontal(68,7,7,219);
+    bordeHorizontal(67,7,7,219);
+    bordeVertical(72,3,4,219);
     bordeVertical(73,3,4,219);
-    bordeVertical(74,3,4,219);
 
 
 
