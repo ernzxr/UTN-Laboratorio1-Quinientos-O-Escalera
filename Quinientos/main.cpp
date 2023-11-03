@@ -1,4 +1,5 @@
-#pragma comment(lib, "winmm.lib")
+/*EN CASO DEL QUE SONIDO NO FUNCIONE, DESCOMENTAR LA DIRECTIVA
+#pragma comment(lib, "winmm.lib")*/
 
 #include <iostream>
 #include <cstdlib>

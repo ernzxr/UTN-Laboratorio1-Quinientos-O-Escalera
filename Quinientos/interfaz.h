@@ -26,6 +26,7 @@ void bordeHorizontalAnimado(int x, int y, int limite) {
         Sleep(5);
     }
 }
+
 void bordeVerticalAnimado(int x, int y, int limite) {
    bordeVertical(x, y, limite, 177);
 
@@ -40,10 +41,6 @@ void lineaPunteadaHorizontal(int limite){
         cout<< "-";
     }
 }
-
-/// INTERFAZ UN JUGADOR
-
-/// INTERFAZ DOS JUGADORES
 
 void resultadosRonda(char mJugadores[][8], int *vAcuPuntajeJugador, int ronda, int jugadores){
     rlutil::cls();
@@ -89,7 +86,6 @@ void mostrarSalioEscalera(){
     cout<<"ESCALERA!"<<endl;
 }
 
-
 void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int tirada, int ronda, int jugador, int maximoPuntajeTirada, int mPuntajesTiradas[][3], int *vAcujugadores ){
     switch(jugador){
         case 0:
@@ -108,8 +104,6 @@ void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int 
         case 1:
             rlutil::locate(86,1);
             cout<<"TIRADA DE: "<<mJugadores[jugador]<<endl;
-           /* rlutil::locate(31,26);
-            cout<<"RONDA NUMERO "<<(char)167<<ronda<<endl;*/
             rlutil::locate(86,5);
             cout<<"PUNTAJE TOTAL ACTUAL "<<vAcujugadores[jugador]<<endl;
             rlutil::locate(86,3);
@@ -117,34 +111,8 @@ void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int 
             rlutil::locate(90,23);
             if(tirada>0)cout<<"PUNTAJE PROVISORIO "<<maximoPuntajeTirada<<endl;
             return;
-        /*case 2:
-
-            rlutil::locate(4,33);
-            cout<<"TIRADA DE: "<<mJugadores[jugador]<<endl;
-            rlutil::locate(45,45);
-            cout<<"RONDA NUMERO "<<(char)167<<ronda<<endl;
-            rlutil::locate(56,67);
-            cout<<"PUNTAJE TOTAL ACTUAL "<<mPuntajeJugadores[jugador][ronda-1]<<endl;
-            rlutil::locate(4,24);
-            cout<<"LANZAMIENTO N"<<(char)167<<tirada+1<<endl;
-            //if(tirada>0)cout<<"PUNTAJE PROVISORIO "<<maximoPuntajeTirada<<endl;
-            return;
-        case 3:
-            rlutil::locate(2,26);
-            cout<<"TIRADA DE: "<<mJugadores[jugador]<<endl;
-            rlutil::locate(31,26);
-            cout<<"RONDA NUMERO "<<(char)167<<ronda<<endl;
-            rlutil::locate(62,26);
-            cout<<"PUNTAJE TOTAL ACTUAL "<<mPuntajeJugadores[jugador][ronda-1]<<endl;
-            rlutil::locate(2,24);
-            cout<<"LANZAMIENTO N"<<(char)167<<tirada+1<<endl;
-            //if(tirada>0)cout<<"PUNTAJE PROVISORIO "<<maximoPuntajeTirada<<endl;
-            return;
-            */
     }
 }
-
-
 
 void solicitarNombreJugador(int jug){
     bordeHorizontal(41, 11, 44, 196);
@@ -335,7 +303,6 @@ void mostrarPuntaje(int puntaje,int jugador){
             }
         }
 
-
 void mostrarPuntajeRonda(int puntajeRonda, int jugador){
     if(jugador==0){
 
@@ -358,6 +325,7 @@ void mostrarPuntajeAcumulado(int tiradasTotales, int ronda, int puntaje, int jug
     cout<<"PUNTAJE ACTUAL: "<<puntaje<<endl;
     }
 }
+
 void tresJugadores(){
     rlutil::cls();
     bordeHorizontal(41, 11, 44, 196);
@@ -370,6 +338,7 @@ void tresJugadores(){
     cout<<"EN DESARROLLO"<<endl;
     rlutil::anykey();
 }
+
 void cuatroJugadores(){
     rlutil::cls();
     bordeHorizontal(41, 11, 44, 196);
