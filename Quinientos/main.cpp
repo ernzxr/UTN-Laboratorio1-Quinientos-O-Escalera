@@ -43,8 +43,8 @@ int main(){
             mute=true;
             break;
     }
+    if(!mute)musicaMenuPrincipal(); /// MUSICA
     while(!finPrograma){
-        if(!mute)musicaMenuPrincipal(); /// MUSICA
         rlutil::cls();
         opcion = menuPrincipal(animacionInicial); /// MENU PRINCIPAL
         animacionInicial = true;
@@ -298,6 +298,7 @@ int main(){
                                             break;
                                         case 2:
                                             /// CAMBIAR MUSICA
+                                            cambiarMusica();
                                             break;
                                         case 0:
                                             /// VOLVER
@@ -313,6 +314,7 @@ int main(){
                                             break;
                                         case 2:
                                             /// CAMBIAR MUSICA
+                                            cambiarMusica();
                                             break;
                                         case 0:
                                             /// VOLVER

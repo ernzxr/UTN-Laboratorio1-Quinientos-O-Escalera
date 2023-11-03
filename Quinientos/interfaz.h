@@ -381,6 +381,19 @@ void nombreJugada(int jugada, int jugador, int x){
     }
 }
 
+void cambiarMusica(){
+    rlutil::cls();
+    bordeHorizontal(41, 11, 44, 196);
+    bordeHorizontal(41, 16, 44, 196);
+    bordeVertical(41, 12, 4, 24);
+    bordeVertical(84, 12, 4, 25);
+    rlutil::locate(52,13);
+    cout<<"SIN PRESUPUESTO"<<endl;
+    rlutil::locate(55,14);
+    cout<<"PARA MAS MUSICA :'("<<endl;
+    rlutil::anykey();
+}
+
 void tresJugadores(){
     rlutil::cls();
     bordeHorizontal(41, 11, 44, 196);
