@@ -296,7 +296,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
             jugador=0;
             for(tirada=0;tirada<3;tirada++){
                 hacerTirada(vDados);
-                datosPartidaJugador(mJugadores, mPuntajeRondaJugador, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas);
+                datosPartidaJugador(mJugadores, mPuntajeRondaJugador, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas,vAcuPuntajeJugador);
                 mostrarDados(vDados, jugador);
                 vTiradasTotales[jugador]+=1;
                 if(escalera(vDados)){
@@ -323,7 +323,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
             for(tirada=0;tirada<3;tirada++){
                 for(jugador=0;jugador<jugadores;jugador++){
                     hacerTirada(vDados);
-                    datosPartidaJugador(mJugadores, mPuntajeRondaJugador, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas);
+                    datosPartidaJugador(mJugadores, mPuntajeRondaJugador, tirada, ronda, jugador, maximoPuntajeTiradas(mPuntajesTiradas, jugador), mPuntajesTiradas,vAcuPuntajeJugador);
                     mostrarDados(vDados, jugador);
                     vTiradasTotales[jugador]+=1;
                     if(escalera(vDados)){
