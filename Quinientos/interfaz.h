@@ -406,5 +406,4 @@ void cuatroJugadores(){
     cout<<"EN DESARROLLO"<<endl;
     rlutil::anykey();
 }
-
 #endif // INTERFAZ_H_INCLUDED

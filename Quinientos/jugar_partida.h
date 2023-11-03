@@ -416,5 +416,4 @@ void actualizarRanking(int *vRankingPuntos, char mRanking[][8], char mJugadores[
         }
     }
 }
-
 #endif // JUGAR_PARTIDA_H_INCLUDED
