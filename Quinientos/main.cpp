@@ -18,15 +18,13 @@ using namespace std;
 #include "menu_principal.h"
 #include "jugar_partida.h"
 
-
 int main(){
     int const CANTIDAD_JUGADORES=4, TOP=10;
     int opcion, opcionRondas, vRankingPuntos[TOP],maxRondas, ronda, tiradasTotales, jugador, jugadores, validarGanador, cQuinientos, cEscalera;
     int mPuntajeRondaJugador[CANTIDAD_JUGADORES][20], vTiradasTotales[CANTIDAD_JUGADORES], vAcuPuntajeJugador[CANTIDAD_JUGADORES], vDados[6], mPuntajesTiradas[CANTIDAD_JUGADORES][3], mTiradaMinimaQuinientos[CANTIDAD_JUGADORES][2];
     char mJugadores[CANTIDAD_JUGADORES][8], mRanking[TOP][8];
-    bool escalera, quinientos, mute, desempate, iniciarPartida, volverInicio, animacionInicial=false;
+    bool escalera, quinientos, mute, desempate, iniciarPartida, volverInicio, animacionInicial=false, finPrograma=false;
     bool vGanadorEscalera[CANTIDAD_JUGADORES], vGanadorQuinientos[CANTIDAD_JUGADORES];
-
 
     defaultRanking(vRankingPuntos, mRanking);
     ordenarRanking(vRankingPuntos, mRanking);
@@ -45,7 +43,7 @@ int main(){
             break;
     }
 
-    while(true){
+    while(!finPrograma){
         if(!mute)musicaMenuPrincipal(); /// MUSICA
         rlutil::cls();
         opcion = menuPrincipal(animacionInicial); /// MENU PRINCIPAL
@@ -264,9 +262,11 @@ int main(){
                             break;
                         case 2:
                             /// TRES JUGADORES
+                            tresJugadores();
                             break;
                         case 3:
                             /// CUATRO JUGADORES
+                            cuatroJugadores();
                             break;
                         case 0:
                             /// VOLVER
@@ -344,7 +344,7 @@ int main(){
                 break;
             case 0:
                 /// CERRAR JUEGO
-                return 0;
+                finPrograma=true;
         }
     }
 }
