@@ -84,6 +84,10 @@ int menuMaxRondas(){
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
+            bordeHorizontal(43, 10, 30, 196);
+            bordeHorizontal(43, 17, 30, 196);
+            bordeVertical(43, 11, 6, 24);
+            bordeVertical(71, 11, 6, 25);
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:
@@ -122,6 +126,7 @@ int menuMaxRondas(){
             case 1:
                 if(opcion == 4) {
                     opcion = 0;
+                    rlutil::setColor(rlutil::WHITE);
                 }
                 return opcion;
             default:
@@ -142,6 +147,10 @@ int menuMultijugador(){
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
+            bordeHorizontal(43, 10, 30, 196);
+            bordeHorizontal(43, 17, 30, 196);
+            bordeVertical(43, 11, 6, 24);
+            bordeVertical(71, 11, 6, 25);
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:
@@ -180,6 +189,7 @@ int menuMultijugador(){
             case 1:
                 if(opcion == 4) {
                     opcion = 0;
+                    rlutil::setColor(rlutil::WHITE);
                 }
                 return opcion;
             default:
@@ -224,6 +234,10 @@ int menuMusica(){
             char tecla = rlutil::getkey();
             switch (tecla) {
                 case 14:
+                    bordeHorizontal(43, 10, 30, 196);
+                    bordeHorizontal(43, 17, 30, 196);
+                    bordeVertical(43, 11, 6, 24);
+                    bordeVertical(71, 11, 6, 25);
                     rlutil::locate(48,11 + opcion);
                     std::cout << " " << std::endl;
                     opcion--;
@@ -242,6 +256,7 @@ int menuMusica(){
                 case 1:
                     if(opcion == 2) {
                         opcion = 2;
+                        rlutil::setColor(rlutil::WHITE);
                     }
                     return opcion;
                 default:
@@ -262,6 +277,10 @@ int menuOpciones(){
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
+            bordeHorizontal(43, 10, 30, 196);
+            bordeHorizontal(43, 17, 30, 196);
+            bordeVertical(43, 11, 6, 24);
+            bordeVertical(71, 11, 6, 25);
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:
@@ -298,6 +317,7 @@ int menuOpciones(){
             case 1:
                 if(opcion == 3) {
                     opcion = 0;
+                    rlutil::setColor(rlutil::WHITE);
                 }
                 return opcion;
             default:
@@ -318,6 +338,10 @@ int menuSonido(){
                 else {
                     rlutil::setColor(rlutil::WHITE);
                 }
+                bordeHorizontal(43, 10, 30, 196);
+                bordeHorizontal(43, 17, 30, 196);
+                bordeVertical(43, 11, 6, 24);
+                bordeVertical(71, 11, 6, 25);
                 rlutil::locate(50, 11 + i);
                 switch (i) {
                     case 1:
@@ -357,6 +381,7 @@ int menuSonido(){
                 case 1:
                     if(opcion == 4) {
                         opcion = 0;
+                        rlutil::setColor(rlutil::WHITE);
                     }
                     return opcion;
                 default:
@@ -377,6 +402,10 @@ int menuColor(){
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
+            bordeHorizontal(43, 10, 30, 196);
+            bordeHorizontal(43, 17, 30, 196);
+            bordeVertical(43, 11, 6, 24);
+            bordeVertical(71, 11, 6, 25);
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:
@@ -416,6 +445,7 @@ int menuColor(){
             case 1:
                 if(opcion == 4) {
                     opcion = 0;
+                    rlutil::setColor(rlutil::WHITE);
                 }
                 return opcion;
             default:
