@@ -290,23 +290,34 @@ int main(){
                             while(opcion != 0){
                                 rlutil::cls();
                                 opcion = menuSonido();
-                                switch(opcion){
-                                    case 1:
-                                        /// QUITAR SONIDO
-                                        mute=true;
-                                        stopMusica();
-                                        break;
-                                    case 2:
-                                        /// PONER MUSICA
-                                        mute=false;
-                                        musicaMenuPrincipal();
-                                        break;
-                                    case 3:
-                                        /// CAMBIAR MUSICA
-                                        break;
-                                    case 0:
-                                        /// VOLVER
-                                        break;
+                                if(!mute){
+                                    switch(opcion){
+                                        case 1:
+                                            /// QUITAR SONIDO
+                                            mute=true;
+                                            stopMusica();
+                                            break;
+                                        case 2:
+                                            /// CAMBIAR MUSICA
+                                            break;
+                                        case 0:
+                                            /// VOLVER
+                                            break;
+                                    }
+                                }
+                                else{
+                                    switch(opcion){
+                                        case 1:
+                                            /// PONER MUSICA
+                                            mute=false;
+                                            musicaMenuPrincipal();
+                                            break;
+                                        case 2:
+                                            /// CAMBIAR MUSICA
+                                            break;
+                                        case 0:
+                                            /// VOLVER
+                                            break;
                                 }
                             }
                             /// SE CAMBIA OPCION A -1 PARA NO CERRAR EL WHILE DE MENU OPCIONES
