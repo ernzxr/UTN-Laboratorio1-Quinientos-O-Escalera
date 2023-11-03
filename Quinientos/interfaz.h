@@ -182,12 +182,11 @@ void terminarPartidaPorQuinientos(char mJugadores[][8], bool *vGanadorQuinientos
             bordeHorizontal(41, 16, 44, 196);
             bordeVertical(41, 12, 4, 24);
             bordeVertical(84, 12, 4, 25);
-            int tiradasGanadores,x=13;
+            int x=13;
             rlutil::locate(45,12);
             cout<<"INSOLITO EMPATE POR QUINIENTOS ENTRE"<<endl;
             for(int jugador=0;jugador<jugadores;jugador++){
                 if(vGanadorQuinientos[jugador] && mTiradaMinimaQuinientos[jugador][1]==validarGanador){
-                    tiradasGanadores=jugador;
                     rlutil::locate(45,x);
                     cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
                     x++;
@@ -258,12 +257,11 @@ void terminarPartidaPorEscalera(char mJugadores[][8], bool *vGanadorEscalera, in
             bordeHorizontal(41, 16, 44, 196);
             bordeVertical(41, 12, 4, 24);
             bordeVertical(84, 12, 4, 25);
-            int tiradasGanadores,x=13;
+            int x=13;
             rlutil::locate(45,12);
             cout<<"INSOLITO EMPATE POR ESCALERA ENTRE"<<endl;
             for(jugador=0;jugador<jugadores;jugador++){
                 if(vGanadorEscalera[jugador] && vAcuPuntajeJugador[jugador]==validarGanador){
-                    tiradasGanadores=jugador;
                     rlutil::locate(45,x);
                     cout<<"JUGADOR "<<mJugadores[jugador]<<endl;
                 }
