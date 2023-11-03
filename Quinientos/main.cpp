@@ -333,9 +333,11 @@ int main(){
                                 switch(opcion){
                                     case 1:
                                         ///COLOR AZUL
+                                        /// BUG
                                         cambiarColor();
                                         break;
                                     case 2:
+                                        /// BUG
                                         ///COLOR VIOLETA
                                         cambiarColor2();
                                         break;
