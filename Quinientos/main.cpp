@@ -318,6 +318,7 @@ int main(){
                                         case 0:
                                             /// VOLVER
                                             break;
+                                    }
                                 }
                             }
                             /// SE CAMBIA OPCION A -1 PARA NO CERRAR EL WHILE DE MENU OPCIONES
