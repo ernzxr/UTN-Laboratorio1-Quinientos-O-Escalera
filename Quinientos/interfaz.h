@@ -91,6 +91,9 @@ void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int 
         case 0:
             rlutil::locate(8,1);
             cout<<"TIRADA DE: "<<mJugadores[jugador]<<endl;
+            bordeHorizontal(48,9,22,22);
+
+
             rlutil::locate(52,11);
             cout<<"RONDA NUMERO "<<(char)167<<ronda<<endl;
             rlutil::locate(8,5);
