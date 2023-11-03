@@ -323,6 +323,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                 }
                     mostrarPuntaje(mPuntajesTiradas[jugador][tirada], jugador);
                 rlutil::anykey();
+                rlutil::cls();
             }
             return;
         default:
@@ -358,6 +359,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                         mTiradaMinimaQuinientos[jugador][1]=vAcuPuntajeJugador[jugador]+mPuntajesTiradas[jugador][tirada];
                     }
                     mostrarPuntaje(mPuntajesTiradas[jugador][tirada],jugador);
+                    rlutil::anykey();
                 }
                 /// SI HUBO UNA ESCALERA SE TERMINAN LAS TIRADAS LUEGO DE QUE JUEGEN TODOS
                 for(jugador=0;jugador<jugadores;jugador++){
@@ -365,7 +367,7 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                         return;
                     }
                 }
-                rlutil::anykey();
+                rlutil::cls();
             }
             return;
     }
