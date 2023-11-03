@@ -26,7 +26,6 @@ int main(){
     char mJugadores[CANTIDAD_JUGADORES][8], mRanking[TOP][8];
     bool escalera, quinientos, mute, desempate, iniciarPartida, volverInicio, animacionInicial=false, finPrograma=false;
     bool vGanadorEscalera[CANTIDAD_JUGADORES], vGanadorQuinientos[CANTIDAD_JUGADORES];
-    int hola;
 
     defaultRanking(vRankingPuntos, mRanking);
     ordenarRanking(vRankingPuntos, mRanking);
@@ -44,7 +43,6 @@ int main(){
             mute=true;
             break;
     }
-
     while(!finPrograma){
         if(!mute)musicaMenuPrincipal(); /// MUSICA
         rlutil::cls();

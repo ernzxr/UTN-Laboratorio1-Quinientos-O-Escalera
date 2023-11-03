@@ -1,6 +1,14 @@
 #ifndef MENU_PRINCIPAL_H_INCLUDED
 #define MENU_PRINCIPAL_H_INCLUDED
 
+void logo() {
+    bordeHorizontal(35,1,7,219);
+    bordeVertical(35,2,2,219);
+    bordeVertical(36,2,2,219);
+    bordeHorizontal(35,3,7,219);
+
+}
+
 int menuPrincipal(bool animacionInicial){
     int opcion = 1, maxOpciones = 5;
     if(!animacionInicial) {
@@ -10,6 +18,7 @@ int menuPrincipal(bool animacionInicial){
         bordeVerticalAnimado(84, 10, 7);
         bordeVerticalAnimado(36, 10, 7);
         bordeVerticalAnimado(83, 10, 7);
+        logo();
     }
     else {
         bordeHorizontal(35, 9, 50, 178);
@@ -18,6 +27,7 @@ int menuPrincipal(bool animacionInicial){
         bordeVertical(84, 10, 7, 178);
         bordeVertical(36, 10, 7, 178);
         bordeVertical(83, 10, 7, 178);
+        logo();
     }
     while(true) {
         for(int i=1; i<=maxOpciones; i++) {

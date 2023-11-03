@@ -101,7 +101,7 @@ void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int 
             cout<<"PUNTAJE TOTAL ACTUAL "<<vAcujugadores[jugador]<<endl;
             rlutil::locate(8,3);
             cout<<"LANZAMIENTO N"<<(char)167<<tirada+1<<endl;
-            rlutil::locate(12,23);
+            rlutil::locate(12,22);
             if(tirada>0)cout<<"PUNTAJE PROVISORIO "<<maximoPuntajeTirada<<endl;
 
             return;
@@ -112,7 +112,7 @@ void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int 
             cout<<"PUNTAJE TOTAL ACTUAL "<<vAcujugadores[jugador]<<endl;
             rlutil::locate(86,3);
             cout<<"LANZAMIENTO N"<<(char)167<<tirada+1<<endl;
-            rlutil::locate(90,23);
+            rlutil::locate(90,22);
             if(tirada>0)cout<<"PUNTAJE PROVISORIO "<<maximoPuntajeTirada<<endl;
             return;
     }
@@ -331,22 +331,53 @@ void mostrarPuntajeAcumulado(int tiradasTotales, int ronda, int puntaje, int jug
 }
 
 void nombreJugada(int jugada, int jugador, int x){
-    switch(jugada){
-    case 1:
-        cout<<"SUMA DE DADOS"<<endl;
-        break;
-    case 2:
-        cout<<"TRIO "<<x<<"++"<<endl;
-        break;
-    case 3:
-        cout<<"SEXTETO "<<x<<endl;
-        break;
-    case 4:
-        cout<<"ESCALERA"<<endl;
-        break;
-    case 5:
-        cout<<"SEXTETO6--"<<endl;
-        break;
+    if(jugador == 0) {
+        switch(jugada){
+            case 1:
+                rlutil::locate(16, 18);
+                cout<<"SUMA DE DADOS"<<endl;
+                break;
+            case 2:
+                rlutil::locate(16, 18);
+                cout<<"TRIO "<<x<<"++"<<endl;
+                break;
+            case 3:
+                rlutil::locate(16, 18);
+                cout<<"SEXTETO "<<x<<endl;
+                break;
+            case 4:
+                rlutil::locate(16, 18);
+                cout<<"ESCALERA"<<endl;
+                break;
+            case 5:
+                rlutil::locate(16, 18);
+                cout<<"SEXTETO6--"<<endl;
+                break;
+        }
+    }
+    if(jugador == 1) {
+        switch(jugada){
+            case 1:
+                rlutil::locate(94, 18);
+                cout<<"SUMA DE DADOS"<<endl;
+                break;
+            case 2:
+                rlutil::locate(94, 18);
+                cout<<"TRIO "<<x<<"++"<<endl;
+                break;
+            case 3:
+                rlutil::locate(94, 18);
+                cout<<"SEXTETO "<<x<<endl;
+                break;
+            case 4:
+                rlutil::locate(94, 18);
+                cout<<"ESCALERA"<<endl;
+                break;
+            case 5:
+                rlutil::locate(94, 18);
+                cout<<"SEXTETO6--"<<endl;
+                break;
+        }
     }
 }
 
