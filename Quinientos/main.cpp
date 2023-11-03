@@ -319,7 +319,6 @@ int main(){
                                             break;
                                     }
                                 }
-                                }
                             }
                             /// SE CAMBIA OPCION A -1 PARA NO CERRAR EL WHILE DE MENU OPCIONES
                             opcion = -1;
