@@ -2,17 +2,17 @@
 #define COLOR_H_INCLUDED
 
 void cambiarColor(){
-
     rlutil::setBackgroundColor(rlutil::BLUE);
 }
-void cambiarColor2(){
 
+void cambiarColor2(){
     rlutil::setBackgroundColor(rlutil::MAGENTA);
 }
-void cambiarColor3(){
 
+void cambiarColor3(){
     rlutil::setBackgroundColor(rlutil::BLACK);
 }
+
 void colorFondo(){
     rlutil::setBackgroundColor(rlutil::BLACK);
 }
