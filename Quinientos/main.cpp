@@ -26,6 +26,7 @@ int main(){
     char mJugadores[CANTIDAD_JUGADORES][8], mRanking[TOP][8];
     bool escalera, quinientos, mute, desempate, iniciarPartida, volverInicio, animacionInicial=false, finPrograma=false;
     bool vGanadorEscalera[CANTIDAD_JUGADORES], vGanadorQuinientos[CANTIDAD_JUGADORES];
+    int hola;
 
     defaultRanking(vRankingPuntos, mRanking);
     ordenarRanking(vRankingPuntos, mRanking);
@@ -289,7 +290,7 @@ int main(){
                             /// SONIDO
                             while(opcion != 0){
                                 rlutil::cls();
-                                opcion = menuSonido();
+                                opcion = menuSonido(mute);
                                 if(!mute){
                                     switch(opcion){
                                         case 1:
@@ -319,6 +320,7 @@ int main(){
                                             /// VOLVER
                                             break;
                                     }
+                                }
                                 }
                             }
                             /// SE CAMBIA OPCION A -1 PARA NO CERRAR EL WHILE DE MENU OPCIONES

@@ -223,8 +223,8 @@ void mostrarRanking(int *vRankingPuntos, char mRanking[][8]){
 
     rlutil::locate(44, 8);
     cout<< "TOP";
-    rlutil::locate(53, 8);
-    cout<< "NMB";
+    rlutil::locate(51, 8);
+    cout<< "JUGADOR";
     rlutil::locate(62, 8);
     cout<< "PTS";
     for(int i=0;i<10;i++){
@@ -298,10 +298,10 @@ int menuMusica(){
 
 int menuOpciones(){
     int opcion = 1, maxOpciones = 3;
-    bordeHorizontal(43, 10, 30, 196);
-    bordeHorizontal(43, 17, 30, 196);
-    bordeVertical(43, 11, 6, 24);
-    bordeVertical(71, 11, 6, 25);
+    bordeHorizontal(43, 10, 29, 196);
+    bordeHorizontal(43, 16, 29, 196);
+    bordeVertical(43, 11, 5, 24);
+    bordeVertical(71, 11, 5, 25);
     while(true) {
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {
@@ -358,12 +358,12 @@ int menuOpciones(){
     }
 }
 
-int menuSonido(){
+int menuSonido(bool mute){
     int opcion = 1, maxOpciones = 4;
     bordeHorizontal(43, 10, 30, 196);
-    bordeHorizontal(43, 17, 30, 196);
-    bordeVertical(43, 11, 6, 24);
-    bordeVertical(71, 11, 6, 25);
+    bordeHorizontal(43, 16, 30, 196);
+    bordeVertical(43, 11, 5, 24);
+    bordeVertical(71, 11, 5, 25);
         while(true) {
             for(int i=1; i<=maxOpciones; i++) {
                 if(i == opcion) {
@@ -376,21 +376,31 @@ int menuSonido(){
                 }
 
                 rlutil::locate(50, 11 + i);
-                switch (i) {
+                if(!mute) {
+                    switch (i) {
                     case 1:
-                    cout<<"QUITAR SONIDO "<<endl;
+                    cout<<"QUITAR SONIDO"<<endl;
                     break;
                     case 2:
-                    cout<<"PONER SONIDO "<<endl;
+                    cout<<"CAMBIAR MUSICA"<<endl;
                     break;
                     case 3:
-                    cout<<"CAMBIAR MUSICA "<<endl;
+                    cout<<"VOLVER"<<endl;
                     break;
-                    case 4:
-                    cout<<"VOLVER "<<endl;
+                    }
+                }
+                else {
+                    switch (i) {
+                    case 1:
+                    cout<<"PONER SONIDO"<<endl;
                     break;
-                    default:
+                    case 2:
+                    cout<<"CAMBIAR MUSICA"<<endl;
                     break;
+                    case 3:
+                    cout<<"VOLVER"<<endl;
+                    break;
+                    }
                 }
             }
             char tecla = rlutil::getkey();
@@ -407,12 +417,12 @@ int menuSonido(){
                     rlutil::locate(48,11 + opcion);
                     std::cout << " " << std::endl;
                     opcion++;
-                    if (opcion > 4) {
-                        opcion = 4;
+                    if (opcion > 3) {
+                        opcion = 3;
                     }
                     break;
                 case 1:
-                    if(opcion == 4) {
+                    if(opcion == 3) {
                         opcion = 0;
                         rlutil::setColor(rlutil::WHITE);
                     }

@@ -91,9 +91,10 @@ void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int 
         case 0:
             rlutil::locate(8,1);
             cout<<"TIRADA DE: "<<mJugadores[jugador]<<endl;
-            bordeHorizontal(48,9,22,22);
-
-
+            bordeHorizontal(48,9,23,22);
+            bordeHorizontal(48,13,23,22);
+            bordeVertical(48,10, 3, 5);
+            bordeVertical(70,10, 3, 5);
             rlutil::locate(52,11);
             cout<<"RONDA NUMERO "<<(char)167<<ronda<<endl;
             rlutil::locate(8,5);
@@ -326,6 +327,26 @@ void mostrarPuntajeAcumulado(int tiradasTotales, int ronda, int puntaje, int jug
     else {
     rlutil::locate(86,23);
     cout<<"PUNTAJE ACTUAL: "<<puntaje<<endl;
+    }
+}
+
+void nombreJugada(int jugada, int jugador, int x){
+    switch(jugada){
+    case 1:
+        cout<<"SUMA DE DADOS"<<endl;
+        break;
+    case 2:
+        cout<<"TRIO "<<x<<"++"<<endl;
+        break;
+    case 3:
+        cout<<"SEXTETO "<<x<<endl;
+        break;
+    case 4:
+        cout<<"ESCALERA"<<endl;
+        break;
+    case 5:
+        cout<<"SEXTETO6--"<<endl;
+        break;
     }
 }
 
