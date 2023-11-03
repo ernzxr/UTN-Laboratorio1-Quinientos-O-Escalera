@@ -26,7 +26,7 @@ void bordeHorizontalAnimado(int x, int y, int limite) {
         Sleep(5);
     }
 }
-void bordeVertical(int x, int y, int limite) {
+void bordeVerticalAnimado(int x, int y, int limite) {
    bordeVertical(x, y, limite, 177);
 
     for(int i=0; i<limite; i++) {

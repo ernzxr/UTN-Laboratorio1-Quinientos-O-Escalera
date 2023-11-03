@@ -3,12 +3,12 @@
 
 int menuPrincipal(){
     int opcion = 1, maxOpciones = 5;
-    bordeHorizontal(35, 9, 50);
-    bordeHorizontal(35, 17, 50);
-    bordeVertical(35, 10, 7);
-    bordeVertical(84, 10, 7);
-    bordeVertical(36, 10, 7);
-    bordeVertical(83, 10, 7);
+    bordeHorizontalAnimado(35, 9, 50);
+    bordeHorizontalAnimado(35, 17, 50);
+    bordeVerticalAnimado(35, 10, 7);
+    bordeVerticalAnimado(84, 10, 7);
+    bordeVerticalAnimado(36, 10, 7);
+    bordeVerticalAnimado(83, 10, 7);
     while(true) {
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {

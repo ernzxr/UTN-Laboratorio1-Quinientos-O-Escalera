@@ -5,7 +5,7 @@ void cargarNombre(char pal[][8], int tam, int jug){
     rlutil::cls();
     int i;
     for(int j=0; j<=jug; j++){
-        solicitarNombreJugador();
+        solicitarNombreJugador(jug);
         fflush(stdin);
         for(i=0; i<tam; i++)
         {
