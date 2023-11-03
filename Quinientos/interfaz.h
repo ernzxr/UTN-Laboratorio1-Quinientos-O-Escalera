@@ -2,11 +2,24 @@
 #define INTERFAZ_H_INCLUDED
 
 /// INTERFAZ MENU PRINCIPAL
-void bordeHorizontal(int x, int y, int limite) {
+
+void bordeHorizontal(int x, int y, int limite, int ascii) {
     for(int i=0; i<limite; i++) {
         rlutil::locate(x + i, y);
-        cout<<(char)177;
+        cout<<(char)ascii;
     }
+}
+
+void bordeVertical(int x, int y, int limite, int ascii) {
+    for(int i=0; i<limite; i++) {
+        rlutil::locate(x, y + i);
+        cout<<(char)ascii;
+    }
+}
+
+void bordeHorizontalAnimado(int x, int y, int limite) {
+    bordeHorizontal(x, y, limite, 177);
+
     for(int i=0; i<limite; i++) {
         rlutil::locate(x + i, y);
         cout<<(char)178;
@@ -14,10 +27,8 @@ void bordeHorizontal(int x, int y, int limite) {
     }
 }
 void bordeVertical(int x, int y, int limite) {
-    for(int i=0; i<limite; i++) {
-        rlutil::locate(x, y + i);
-        cout<<(char)177;
-    }
+   bordeVertical(x, y, limite, 177);
+
     for(int i=0; i<limite; i++) {
         rlutil::locate(x, y + i);
         cout<<(char)178;
@@ -129,8 +140,14 @@ void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int 
 
 
 
-void solicitarNombreJugador(){
-
+void solicitarNombreJugador(int jug){
+    bordeHorizontal(41, 11, 44, 196);
+    bordeHorizontal(41, 16, 44, 196);
+    bordeVertical(41, 12, 4, 24);
+    bordeVertical(84, 12, 4, 25);
+    rlutil::locate(45, 12);
+    cout<< "JUGADOR "<<jug<<endl;
+    rlutil::locate(45, 12 + jug);
     cout<<"INGRESE SU NOMBRE [AAA-AAA]: ";
 }
 
