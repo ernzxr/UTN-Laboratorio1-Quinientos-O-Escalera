@@ -38,9 +38,6 @@ int menuPrincipal(){
                 case 5:
                     cout << "SALIR";
                     break;
-                default:
-                    cout << "OPCION INVALIDA";
-                    break;
             }
         }
        char tecla = rlutil::getkey();
@@ -74,6 +71,10 @@ int menuPrincipal(){
 
 int menuMaxRondas(){
     int opcion = 1, maxOpciones = 4;
+    bordeHorizontal(43, 10, 30, 196);
+    bordeHorizontal(43, 17, 30, 196);
+    bordeVertical(43, 11, 6, 24);
+    bordeVertical(71, 11, 6, 25);
     while(true) {
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {
@@ -84,10 +85,6 @@ int menuMaxRondas(){
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
-            bordeHorizontal(43, 10, 30, 196);
-            bordeHorizontal(43, 17, 30, 196);
-            bordeVertical(43, 11, 6, 24);
-            bordeVertical(71, 11, 6, 25);
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:
@@ -137,6 +134,10 @@ int menuMaxRondas(){
 
 int menuMultijugador(){
     int opcion = 1, maxOpciones = 4;
+    bordeHorizontal(43, 10, 30, 196);
+    bordeHorizontal(43, 17, 30, 196);
+    bordeVertical(43, 11, 6, 24);
+    bordeVertical(71, 11, 6, 25);
     while(true) {
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {
@@ -147,10 +148,7 @@ int menuMultijugador(){
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
-            bordeHorizontal(43, 10, 30, 196);
-            bordeHorizontal(43, 17, 30, 196);
-            bordeVertical(43, 11, 6, 24);
-            bordeVertical(71, 11, 6, 25);
+
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:
@@ -208,6 +206,10 @@ void mostrarRanking(int *vRankingPuntos, char mRanking[][8]){
 
 int menuMusica(){
     int opcion = 1, maxOpciones = 2;
+     bordeHorizontal(40, 10, 30, 196);
+     bordeHorizontal(40, 15, 30, 196);
+     bordeVertical(40, 11, 4, 24);
+     bordeVertical(70, 11, 4, 25);
         while(true) {
             for(int i=1; i<=maxOpciones; i++) {
                 if(i == opcion) {
@@ -218,7 +220,6 @@ int menuMusica(){
                 else {
                     rlutil::setColor(rlutil::WHITE);
                 }
-
                 rlutil::locate(50, 11 + i);
                 switch (i) {
                     case 1:
@@ -234,10 +235,6 @@ int menuMusica(){
             char tecla = rlutil::getkey();
             switch (tecla) {
                 case 14:
-                    bordeHorizontal(43, 10, 30, 196);
-                    bordeHorizontal(43, 17, 30, 196);
-                    bordeVertical(43, 11, 6, 24);
-                    bordeVertical(71, 11, 6, 25);
                     rlutil::locate(48,11 + opcion);
                     std::cout << " " << std::endl;
                     opcion--;
@@ -267,6 +264,10 @@ int menuMusica(){
 
 int menuOpciones(){
     int opcion = 1, maxOpciones = 3;
+    bordeHorizontal(43, 10, 30, 196);
+    bordeHorizontal(43, 17, 30, 196);
+    bordeVertical(43, 11, 6, 24);
+    bordeVertical(71, 11, 6, 25);
     while(true) {
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {
@@ -277,10 +278,7 @@ int menuOpciones(){
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
-            bordeHorizontal(43, 10, 30, 196);
-            bordeHorizontal(43, 17, 30, 196);
-            bordeVertical(43, 11, 6, 24);
-            bordeVertical(71, 11, 6, 25);
+
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:
@@ -328,6 +326,10 @@ int menuOpciones(){
 
 int menuSonido(){
     int opcion = 1, maxOpciones = 4;
+    bordeHorizontal(43, 10, 30, 196);
+    bordeHorizontal(43, 17, 30, 196);
+    bordeVertical(43, 11, 6, 24);
+    bordeVertical(71, 11, 6, 25);
         while(true) {
             for(int i=1; i<=maxOpciones; i++) {
                 if(i == opcion) {
@@ -338,10 +340,7 @@ int menuSonido(){
                 else {
                     rlutil::setColor(rlutil::WHITE);
                 }
-                bordeHorizontal(43, 10, 30, 196);
-                bordeHorizontal(43, 17, 30, 196);
-                bordeVertical(43, 11, 6, 24);
-                bordeVertical(71, 11, 6, 25);
+
                 rlutil::locate(50, 11 + i);
                 switch (i) {
                     case 1:
@@ -392,6 +391,10 @@ int menuSonido(){
 
 int menuColor(){
     int opcion = 1, maxOpciones = 4;
+    bordeHorizontal(43, 10, 30, 196);
+    bordeHorizontal(43, 17, 30, 196);
+    bordeVertical(43, 11, 6, 24);
+    bordeVertical(71, 11, 6, 25);
     while(true) {
         for(int i=1; i<=maxOpciones; i++) {
             if(i == opcion) {
@@ -402,10 +405,7 @@ int menuColor(){
             else {
                 rlutil::setColor(rlutil::WHITE);
             }
-            bordeHorizontal(43, 10, 30, 196);
-            bordeHorizontal(43, 17, 30, 196);
-            bordeVertical(43, 11, 6, 24);
-            bordeVertical(71, 11, 6, 25);
+
             rlutil::locate(50, 11 + i);
             switch (i) {
                 case 1:

@@ -36,9 +36,11 @@ int main(){
     opcion = menuMusica();
     switch(opcion){
         case 1:
-            mute=true;
-        case 2:
             mute=false;
+            break;
+        case 2:
+            mute=true;
+            break;
     }
 
     while(true){
