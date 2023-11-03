@@ -302,19 +302,24 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                 vTiradasTotales[jugador]+=1;
                 if(escalera(vDados)){
                     vGanadorEscalera[jugador]=true;
+                    nombreJugada(4, jugador, 0);
                     return;
                 }
                 else if(sextetoSeis(vDados)){
                     reiniciarPuntajeJugador(mPuntajeRondaJugador, jugador);
+                    nombreJugada(5, jugador, 0);
                 }
                 else if(sexteto(vDados)){
                     mPuntajesTiradas[jugador][tirada]=sexteto(vDados);
+                    nombreJugada(3, jugador, sexteto(vDados)/50);
                 }
                 else if(trio(vDados)){
                     mPuntajesTiradas[jugador][tirada]=trio(vDados);
+                    nombreJugada(2, jugador, trio(vDados)/10);
                 }
                 else{
                     mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
+                    nombreJugada(1, jugador, 0);
                 }
                     mostrarPuntaje(mPuntajesTiradas[jugador][tirada], jugador);
                 rlutil::anykey();
@@ -329,18 +334,23 @@ void jugarRonda(int *vDados, int mPuntajesTiradas[][3], int mPuntajeRondaJugador
                     vTiradasTotales[jugador]+=1;
                     if(escalera(vDados)){
                         vGanadorEscalera[jugador]=true;
+                        nombreJugada(4, jugador, 0);
                     }
                     else if(sextetoSeis(vDados)){
                         reiniciarPuntajeJugador(mPuntajeRondaJugador, jugador);
+                        nombreJugada(5, jugador, 0);
                     }
                     else if(sexteto(vDados)){
                         mPuntajesTiradas[jugador][tirada]=sexteto(vDados);
+                        nombreJugada(3, jugador, sexteto(vDados)/50);
                     }
                     else if(trio(vDados)){
                         mPuntajesTiradas[jugador][tirada]=trio(vDados);
+                        nombreJugada(2, jugador, trio(vDados)/10);
                     }
                     else{
                         mPuntajesTiradas[jugador][tirada]=sumaDeDados(vDados);
+                        nombreJugada(1, jugador, 0);
                     }
                     if((vAcuPuntajeJugador[jugador]+mPuntajesTiradas[jugador][tirada])>=500 && !vGanadorQuinientos[jugador]){
                         vGanadorQuinientos[jugador]=true;
