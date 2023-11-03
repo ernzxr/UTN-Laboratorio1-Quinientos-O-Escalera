@@ -12,6 +12,7 @@
 using namespace std;
 
 #include "rlutil.h"
+#include "logo.h"
 #include "color.h"
 #include "musica.h"
 #include "dados.h"
@@ -289,7 +290,7 @@ int main(){
                             /// SONIDO
                             while(opcion != 0){
                                 rlutil::cls();
-                                opcion = menuSonido();
+                                opcion = menuSonido(mute);
                                 if(!mute){
                                     switch(opcion){
                                         case 1:
@@ -318,6 +319,7 @@ int main(){
                                         case 0:
                                             /// VOLVER
                                             break;
+                                }
                                 }
                             }
                             /// SE CAMBIA OPCION A -1 PARA NO CERRAR EL WHILE DE MENU OPCIONES
