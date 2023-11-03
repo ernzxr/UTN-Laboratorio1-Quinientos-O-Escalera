@@ -38,7 +38,7 @@
 		<Unit filename="color.h" />
 		<Unit filename="interfaz.h" />
 		<Unit filename="jugar_partida.h" />
-		<Unit filename="logo,h.h" />
+		<Unit filename="logo.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="menu_principal.h" />
 		<Extensions>
