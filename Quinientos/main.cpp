@@ -12,7 +12,6 @@
 using namespace std;
 
 #include "rlutil.h"
-#include "logo.h"
 #include "color.h"
 #include "musica.h"
 #include "dados.h"
@@ -27,6 +26,7 @@ int main(){
     char mJugadores[CANTIDAD_JUGADORES][8], mRanking[TOP][8];
     bool escalera, quinientos, mute, desempate, iniciarPartida, volverInicio, animacionInicial=false, finPrograma=false;
     bool vGanadorEscalera[CANTIDAD_JUGADORES], vGanadorQuinientos[CANTIDAD_JUGADORES];
+    int hola;
 
     defaultRanking(vRankingPuntos, mRanking);
     ordenarRanking(vRankingPuntos, mRanking);
