@@ -36,6 +36,7 @@ void bordeVerticalAnimado(int x, int y, int limite) {
         Sleep(20);
     }
 }
+
 void lineaPunteadaHorizontal(int limite){
     for(int i=0; i<limite; i++) {
         cout<< "-";
@@ -103,16 +104,16 @@ void mostrarSalioEscalera(){
 }
 
 void datosPartidaJugador(char mJugadores[][8], int mPuntajeJugadores[][20], int tirada, int ronda, int jugador, int maximoPuntajeTirada, int mPuntajesTiradas[][3], int *vAcujugadores ){
-    switch(jugador){
-        case 0:
-            rlutil::locate(8,1);
-            cout<<"TIRADA DE: "<<mJugadores[jugador]<<endl;
             bordeHorizontal(48,9,23,22);
             bordeHorizontal(48,13,23,22);
             bordeVertical(48,10, 3, 5);
             bordeVertical(70,10, 3, 5);
             rlutil::locate(52,11);
             cout<<"RONDA NUMERO "<<(char)167<<ronda<<endl;
+    switch(jugador){
+        case 0:
+            rlutil::locate(8,1);
+            cout<<"TIRADA DE: "<<mJugadores[jugador]<<endl;
             rlutil::locate(8,5);
             cout<<"PUNTAJE TOTAL ACTUAL "<<vAcujugadores[jugador]<<endl;
             rlutil::locate(8,3);
